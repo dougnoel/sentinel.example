@@ -1,13 +1,14 @@
 #Sentinel.Example
+Works with Sentinel 1.0.2
 
 # Section 0: Prerequisites
 
 You will need to have the following tools installed before creating a project:
  * Eclipse
- * Java
- * Maven
- * Google Chrome
- * Ranorex Selocity Chrome Plugin
+ * Java (1.8)
+ * Maven (2.5.4 or later)
+ * Google Chrome (receommended)
+ * Ranorex Selocity Chrome Plugin (recommended)
 
 # Section 1: Creating A New Project
 
