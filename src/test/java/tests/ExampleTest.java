@@ -7,8 +7,8 @@ import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 
 import com.cucumber.listener.Reporter;
-import sentinel.pages.PageManager;
-import sentinel.utils.WebDriverFactory;
+import com.dougnoel.sentinel.pages.PageManager;
+import com.dougnoel.sentinel.webdrivers.WebDriverFactory;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;

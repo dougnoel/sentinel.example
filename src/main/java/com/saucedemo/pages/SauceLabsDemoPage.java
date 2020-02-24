@@ -1,6 +1,6 @@
 package com.saucedemo.pages;
 
-import sentinel.pages.Page;
+import com.dougnoel.sentinel.pages.Page;
 
 public class SauceLabsDemoPage extends Page {
 
