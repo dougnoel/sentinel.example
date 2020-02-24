@@ -5,7 +5,7 @@
 
 	<groupId>com.dougnoel</groupId>
 	<artifactId>com.dougnoel.sentinel.example</artifactId>
-	<version>1.0.2</version>
+	<version>1.0.3</version>
 	<packaging>jar</packaging>
 
 	<name>com.dougnoel.sentinel.example</name>
@@ -20,7 +20,7 @@
 		<dependency>
 			<groupId>com.dougnoel</groupId>
 			<artifactId>sentinel</artifactId>
-			<version>1.0.2</version>
+			<version>1.0.3</version>
 		</dependency>
 
 		<dependency>
