@@ -1,0 +1,7 @@
+---
+configurations:
+  default:
+    pageObjectPackages: "com.saucedemo.pages,com.saucelabs.pages"
+    os: "OS X"
+    browser: "chrome"
+...

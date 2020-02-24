@@ -1,18 +1,44 @@
-#Sentinel.Example
+#com.dougnoel.sentinel.Example
 Works with Sentinel 1.0.2
 
-# Section 0: Prerequisites
+# Section 0: Installation
 
+## 0.1 Prerequisites
 You will need to have the following tools installed before creating a project:
  * Eclipse
  * Java (1.8)
  * Maven (2.5.4 or later)
- * Google Chrome (receommended)
- * Ranorex Selocity Chrome Plugin (recommended)
+ * Google Chrome (recommended)
+
+## 0.2 Setting up the Project
+
+These instructions assume you are using Eclipse.
+
+**On the command line:**
+Clone the project from git.
+
+```
+git clone https://github.com/dougnoel/sentinel.example.git
+```
+1. Open Eclipse
+2. File -> Open Projects from File system...
+3. Next to Import Source click the Directory button and browse to the installed location.
+4. Click the Finish button.
+1. Right-Click on the project in the Project Explorer.
+2. Maven -> Update Project...
+3. Wait for the status bar in the lower right-hand corner to finish before continuing.
+
+## 0.3 Install the Sentinel Jar
+>__NOTE:__ This is a temporary solution until we can get the Sentinel jar in the Maven repo.
+
+On the command line, install Sentinel to your local Maven Repo from the root of your project:
+
+```
+mvn install:install-file -Dfile=lib/sentinel/sentinel-1.0.3.jar -DgroupId=com.dougnoel -DartifactId=sentinel -Dversion=1.0.3 -Dpackaging=jar -DgeneratePom=true
 
 # Section 1: Creating A New Project
 
-Follow these steps to setup your project from scratch. Alternately you can use the sentinel.example project and modify it. These instructions assume that you are using Eclipse, which is a free IDE. If you are familiar with another IDE, you can use that instead. This project will work on all major operating systems.
+Follow these steps to setup your project from scratch. Alternately you can use the com.dougnoel.sentinel.example project and modify it. These instructions assume that you are using Eclipse, which is a free IDE. If you are familiar with another IDE, you can use that instead. This project will work on all major operating systems.
 
 ## 1.1 Create a New Project in Eclipse
 
@@ -52,7 +78,7 @@ _Note:_ If you look in the Project Explorer, the file will not appear. It is sti
 ## 1.3 Install the Sentinel Jar
 >__NOTE:__ This is a temporary solution until we can get the Sentinel jar in the Maven repo.
 
-1. Download the latest sentinel.jar OR create your own by cloning the [Sentinel repo](https://github.com/dougnoel/sentinel) and building it.
+1. Download the latest com.dougnoel.sentinel.jar OR create your own by cloning the [Sentinel repo](https://github.com/dougnoel/sentinel) and building it.
 2. Create a __lib__ directory.
 3. Inside the __lib__ directory create a __sentinel__ directory.
 4. Copy the ``sentinel-1.0.0.jar`` file into the __lib/sentinel__ directory.
@@ -90,16 +116,16 @@ Maven creates some default files and packages we don't need, and we need to crea
 
 ### 1.5.1 Remove Extraneous Default Packages
 1. In the __Package Explorer__ expand __src/main/java__.
-2. Right-click on the __com.sentinel.<projectname>__ package and select __Delete__.
+2. Right-click on the __com.com.dougnoel.sentinel.<projectname>__ package and select __Delete__.
 3. Click the __Ok__ button.
 4. In the __Package Explorer__ expand __src/test/java__.
-5. Expand the __com.sentinel.<projectname>__ package.
+5. Expand the __com.com.dougnoel.sentinel.<projectname>__ package.
 6. Right-click the __AppTest.java__ file and select __Delete__.
 7. Click the __Ok__ button.
 
 ### 1.5.2 Create Starting Packages
 1. In the __Package Explorer__ right-click on __src/main/java__ and select __New -> Package__.
-2. In the name field enter __com.sentinel.<projectname>.pages__
+2. In the name field enter __com.com.dougnoel.sentinel.<projectname>.pages__
 3. Ensure ensure __Create package-info.java is checked.
 4. Press the __Finish__ button.
 5. In the __Package Explorer__ right-click on __src/test/java__ and select __New -> Folder__.
@@ -114,44 +140,65 @@ Maven creates some default files and packages we don't need, and we need to crea
 2. Copy the conf folder from the Sentinel project to your project root (same level as src).
 3. Delete the log4j2.xml config file from the conf folder in your project.
 
-### 1.5.4 Create a sentinel.yml configuration file
+### 1.5.4 Create a com.dougnoel.sentinel.yml configuration file
 
-Create a file in the conf directory called 'sentinel.yml'. Here you will need to set values in order to run your tests. All configuration properties such as which browser and operating system to use during testing, saucelabs configuration, which page object packages you want to test, and other necessary values are to be set on an environment specific basis. 
+Create a file in the conf directory called 'com.dougnoel.sentinel.yml'. Here you will need to set values in order to run your tests. All configuration properties such as which browser and operating system to use during testing, saucelabs configuration, which page object packages you want to test, and other necessary values are to be set on an environment specific basis. 
 
-##### **You must set browser and operating system values in order to run a test**
+##### **You must set browser, operating system (os) and pageObjectPackages values in order to run a test**
 
-Here are all the properities you can set in the sentinel.yml file:
+Here are all the properties you can set in the com.dougnoel.sentinel.yml file:
 
-| Property Name     |Possible Values                                                   |
-| ------------------|------------------------------------------------------------------|
-| env               |any environment name                                              |
-| browser           |Chrome, Firefox, IE, Safari                                       |
-| os                |"OS X", Windows, Mac, Linux, Win                                  |  
-| ssltrust          |all, none                                                         |
-| pageObjectPackages|a comma seperated list of page oject packages defined in sentinel |
-| saucelabs         |"username:passwordKey"                                            |  
-| timeout           |any number, defaults to 10                                        |
-| timeunit          |any unit of time, defaults to seconds                             |
-| user.name         |The person running the test, NOT a test user                      |  
-| download          |The download directory                                            |
+#### Commandline Only
 
+| Property Name      | Possible Values                                                    | Required? |
+| ------------------ | ------------------------------------------------------------------ | --------- |
+| env                | any environment name                                               | *         |
+| user.name          | The person running the test, NOT a test user                       |           |
+
+#### Testing Properties
+
+| Property Name      | Possible Values                                                    | Required? |
+| ------------------ | ------------------------------------------------------------------ | --------- |
+| browser            | Chrome, Firefox, IE, Safari                                        | *         |
+| os                 | "OS X", Windows, Mac, Linux, Win                                   | *         |
+| pageObjectPackages | a comma separated list of page object packages defined in sentinel | *         |
+| timeout            | any number, defaults to 10                                         |           |
+| timeunit           | any unit of time, defaults to seconds                              |           |
+| download           | The download directory                                             |           |
+
+#### Saucelabs Properties
+These only need to be set if you want to use Saucelabs to execute tests.
+
+| Property Name      | Possible Values                                                    | Required? |
+| ------------------ | ------------------------------------------------------------------ | --------- |
+| browser            | Chrome, Firefox, IE, Safari                                        | *         |
+| version            | Browser version. Set to latest or do not set for latest browser.   |           |
+| os                 | "Windows 10", Mac, Linux                                           | *         |  
+| saucelabsUserName  | Saucelabs Username                                                 | *         |  
+| saucelabsAccessKey | Saucelabs Access Key - Generated and downloaded from Saucelabs.    | *         |
+| parent-tunnel      | Saucelabs tunneling information if necessary.                      |           |
+| tunnelIdentifier   | Saucelabs tunneling information if necessary.                      |           | 
+| name               | The project name.                                                  |           |
+| build              | The build being tested.                                            |           |  
+| tags               | Any tags you want associated with the execution.                   |           |
+    
 ## 1.6 Create Your First Test
 Refer to the files in this test project for examples.
 
 ### 1.6.1 Create a Page Object
 1. In the __Package Explorer__ expand __src/main/java__.
-2. Right-click on the __com.sentinel.<projectname>.pages__ package and select __New -> Class__.
+2. Right-click on the __com.com.dougnoel.sentinel.<projectname>.pages__ package and select __New -> Class__.
 3. Using [Pascal Case](https://en.wikipedia.org/wiki/Camel_case) name your page object something that would make sense to a business owner, ending in the word __Page__. Enter this into the __Name__ field.
-4. In the __Superclass__ field, paste the following: `sentinel.pages.Page`
+4. In the __Superclass__ field, paste the following: `com.dougnoel.sentinel.pages.Page`
 5. Click the __Finish__ button.
 6. Your new class file will open with a .java extension.
-__NOTE:__ If the word `Page` or `sentinel.pages.Page` is underlined in red, then you missed one of the steps in section 1.4 above.
+__NOTE:__ If the word `Page` or `com.dougnoel.sentinel.pages.Page` is underlined in red, then you missed one of the steps in section 1.4 above.
 
 ### 1.6.2 Create a Page Element
 Before we can create a Page Element, we need to find an element on a web page.
 1. Open up your web page in Chrome.
 2. Right-click on the element you want to use to create a Page Element and select __Inspect__. The Chrome debug console will appear.
-3. Examine the element and determine how you want to identify it. Ideally, the element has an ID. If not, but it has display text, for example a login button that says "Login", we can identify it using TEXT. If neither of those options is available, use XPATH. (There are other options including CSS, NAME, PARTIALTEXT, INDEX and VALUE. For more information on these options, check out the Javadoc on sentinel.utils.SelectorType)
+3. Examine the element and determine how you want to identify it. Ideally, the element has an ID. If not, but it has display text, for example a login button that says "Login", we can identify it using TEXT. If neither of those options is available, use XPATH. (There are other options including CSS, NAME, PARTIALTEXT, INDEX and VALUE. For more information on these options, check out the Javadoc on com.dougnoel.sentinel.utils.SelectorType)
 
 #### 1.6.2.1 Create a Page Element Using an ID
 `new Textbox username_field() { return new Textbox(ID, "my_id"); }` 
@@ -167,7 +214,7 @@ URLs and credentials can be read from a config file or a Vault server. To start,
 
 1. In the __Package Explorer__ expand __src/main/java__.
 2. Right-click the page you made in __Section 1.5.1__ and select __Copy__.
-3. Right-click on the __com.sentinel.<projectname>.pages__ package and select __New -> File__.
+3. Right-click on the __com.com.dougnoel.sentinel.<projectname>.pages__ package and select __New -> File__.
 4. Paste the name you copied in the __File Name__ box and change the __.java__ extension to __.yml__ then click the __Finish__ button.
 5. In the file that opens, type __urls:__ and hit the __RETURN__ key.
 6. Hit the __Tab__ key.
@@ -216,8 +263,8 @@ import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 
 import com.cucumber.listener.Reporter;
-import sentinel.pages.PageManager;
-import sentinel.utils.WebDriverFactory;
+import com.dougnoel.com.dougnoel.sentinel.pages.PageManager;
+import com.dougnoel.com.dougnoel.sentinel.utils.WebDriverFactory;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
@@ -225,7 +272,7 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(monochrome = true
         , features = "src/test/java/features"
-        , glue = { "stepdefinitions", "sentinel.steps" }
+        , glue = { "stepdefinitions", "com.dougnoel.sentinel.steps" }
         , plugin = { "com.cucumber.listener.ExtentCucumberFormatter:reports/extent-cucumber-report.html" }
 //      , tags = { "@MYTAG-1" }
 )
@@ -416,7 +463,7 @@ package apis;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import sentinel.apis.API;
+import com.dougnoel.com.dougnoel.sentinel.apis.API;
 
 public class TestAPI extends API {
 	
@@ -435,8 +482,8 @@ package apis;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import sentinel.apis.API;
-import sentinel.apis.GET;
+import com.dougnoel.com.dougnoel.sentinel.apis.API;
+import com.dougnoel.com.dougnoel.sentinel.apis.GET;
 
 public class TestAPI extends API {
 	public GET to_do_list () { return new GET("todos"); }
@@ -458,11 +505,11 @@ getting debug output while developing. The second is good for running in a CI/CD
 
 #### 4.1.1 Setting the Test Environment
 
-Create a file in the conf directory called 'sentinel.yml'. Here you will need to set values in order to run your tests. All configuration properties such as which browser and operating system to use during testing, saucelabs configuration, which page object packages you want to test, and other necessary values are to be set on an environment specific basis. 
+Create a file in the conf directory called 'com.dougnoel.sentinel.yml'. Here you will need to set values in order to run your tests. All configuration properties such as which browser and operating system to use during testing, saucelabs configuration, which page object packages you want to test, and other necessary values are to be set on an environment specific basis. 
 
 ##### **You must set browser and operating system values in order to run a test**
 
- The below example is taken from the example configuration file in the conf directory called sentinel.example.yml.
+ The below example is taken from the example configuration file in the conf directory called com.dougnoel.sentinel.example.yml.
 
 ```
 ---
@@ -485,7 +532,7 @@ configurations:
     saucelabsAccessKey: "apikey"
 ...
 ```
-Here are all the properties you can set in the sentinel.yml file:
+Here are all the properties you can set in the com.dougnoel.sentinel.yml file:
 
 ```
 | Property Name     |Possible Values                                                    |
