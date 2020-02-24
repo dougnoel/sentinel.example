@@ -1,0 +1,11 @@
+---
+configurations:
+  default:
+    pageObjectPackages: "com.saucedemo.pages,com.saucelabs.pages"
+    os: "Windows 10"
+    browser: "chrome"
+    saucelabsUserName: "username"
+    saucelabsAccessKey: "apikey"
+    parenttunnel: "tunnelname"
+    tunnelIdentifier: "tunnelID"
+...

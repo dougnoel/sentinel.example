@@ -16,7 +16,7 @@ import cucumber.api.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(monochrome = true
         , features = "src/test/java/features"
-        , glue = { "stepdefinitions", "sentinel.steps" }
+        , glue = { "stepdefinitions", "com.dougnoel.sentinel.steps" }
         , plugin = { "com.cucumber.listener.ExtentCucumberFormatter:reports/extent-cucumber-report.html" }
       , tags = { "@example" }
 )
@@ -25,11 +25,8 @@ public class ExampleTest {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
-        System.setProperty("env", "prod");
-        System.setProperty("pageObjectPackages","pages,apis,com.saucedemo.pages,com.saucelabs.pages");
-        System.setProperty("browser", "Chrome");
-        System.setProperty("os", "OS X"); // Choose "Windows" or "OS X" or "Linux"
-//      System.setProperty("saucelabs", "username:saucelabs_key");
+        System.setProperty("env", "prod"); // Set the environment (dev/qa/stage/prod/etc)
+        System.setProperty("org.freemarker.loggerLibrary", "none");
         WebDriverFactory.instantiateWebDriver();
     }
 
