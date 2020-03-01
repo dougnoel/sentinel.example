@@ -28,13 +28,15 @@ git clone https://github.com/dougnoel/sentinel.example.git
 2. Maven -> Update Project...
 3. Wait for the status bar in the lower right-hand corner to finish before continuing.
 
-## 0.3 Install the Sentinel Jar
->__NOTE:__ This is a temporary solution until we can get the Sentinel jar in the Maven repo.
+## 0.3 Web Drivers
 
-On the command line, install Sentinel to your local Maven Repo from the root of your project:
+The web drivers are stored in src/main/resources/drivers/[os] to make sure there is only one place to fix driver compatibility issues. Chrome auto updates, and so is the one that will go of date most often. While we could pull the driver from a path and let each implementation install the drivers, this can become problematic in CI/CD environments where we do not control the system. This also reduces the learning curve for using Sentinel.
+NOTE: All drivers are 64-bit versions. If you need to test on an old 32-bit browser, you will need to replace the drivers provided with a 32-bit driver. See the driver creators for support.
 
-```
-mvn install:install-file -Dfile=lib/sentinel/sentinel-1.0.3.jar -DgroupId=com.dougnoel -DartifactId=sentinel -Dversion=1.0.3 -Dpackaging=jar -DgeneratePom=true
+* [Chromedriver](http://chromedriver.chromium.org/) 80.0.3987.106 (2020-02-13) - Driver for automating Google Chrome.
+* [Geckodriver](https://github.com/mozilla/geckodriver/releases) v0.26.0 (Oct 11 2019) - Driver for automating Mozilla Firefox.
+* [IE Driver](http://selenium-release.storage.googleapis.com/index.html) 3.9 (2018-02-05) - Driver for automating IE.
+* [Safari](https://webkit.org/blog/6900/webdriver-support-in-safari-10/) - Safari driver is embedded in Safari.
 
 # Section 1: Creating A New Project
 
@@ -602,7 +604,7 @@ Additional features that you can use.
 
 ## 5.1 Logging in as a user.
 
-### 3.1.1 Editing the YAML
+### 5.1.1 Editing the YAML
 1. Open your PageName.yml file for the page you want to have users.
 2. Add in default users.
 
