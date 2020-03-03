@@ -1,10 +1,11 @@
-#com.dougnoel.sentinel.Example
-Works with Sentinel 1.0.2
+#Sentinel.Example 1.0.3
+Works with Sentinel 1.0.3
 
 # Section 0: Installation
 
 ## 0.1 Prerequisites
 You will need to have the following tools installed before creating a project:
+ * Git 
  * Eclipse
  * Java (1.8)
  * Maven (2.5.4 or later)
@@ -28,121 +29,23 @@ git clone https://github.com/dougnoel/sentinel.example.git
 2. Maven -> Update Project...
 3. Wait for the status bar in the lower right-hand corner to finish before continuing.
 
-## 0.3 Install the Sentinel Jar
->__NOTE:__ This is a temporary solution until we can get the Sentinel jar in the Maven repo.
+## 0.3 Web Drivers
 
-On the command line, install Sentinel to your local Maven Repo from the root of your project:
+The web drivers are stored in src/main/resources/drivers/[os] to make sure there is only one place to fix driver compatibility issues. Chrome auto updates, and so is the one that will go of date most often. While we could pull the driver from a path and let each implementation install the drivers, this can become problematic in CI/CD environments where we do not control the system. This also reduces the learning curve for using Sentinel.
+NOTE: All drivers are 64-bit versions. If you need to test on an old 32-bit browser, you will need to replace the drivers provided with a 32-bit driver. See the driver creators for support.
 
-```
-mvn install:install-file -Dfile=lib/sentinel/sentinel-1.0.3.jar -DgroupId=com.dougnoel -DartifactId=sentinel -Dversion=1.0.3 -Dpackaging=jar -DgeneratePom=true
+* [Chromedriver](http://chromedriver.chromium.org/) 80.0.3987.106 (2020-02-13) - Driver for automating Google Chrome.
+* [Geckodriver](https://github.com/mozilla/geckodriver/releases) v0.26.0 (Oct 11 2019) - Driver for automating Mozilla Firefox.
+* [IE Driver](http://selenium-release.storage.googleapis.com/index.html) 3.9 (2018-02-05) - Driver for automating IE.
+* [Safari](https://webkit.org/blog/6900/webdriver-support-in-safari-10/) - Safari driver is embedded in Safari.
 
 # Section 1: Creating A New Project
 
-Follow these steps to setup your project from scratch. Alternately you can use the com.dougnoel.sentinel.example project and modify it. These instructions assume that you are using Eclipse, which is a free IDE. If you are familiar with another IDE, you can use that instead. This project will work on all major operating systems.
+How to clone the sentinel.example project and modify it. These instructions assume that you are using Eclipse, which is a free IDE. If you are familiar with another IDE, you can use that instead. This project will work on all major operating systems.
 
-## 1.1 Create a New Project in Eclipse
+### 1.5.4 Create a sentinel.yml configuration file
 
-1. In Eclipse: File -> New -> Other... (<kbd>__⌘N__</kbd>)
-2. Open the __Maven__ folder and select __Maven Project__.
-3. Click the __Next__ button.
-4. Select a project folder.
-5. Click the __Next__ button 2 times.
-6. In the __Group ID__ field, enter com.<yourdomain>
-7. In the __Artifact ID__ field, enter your project name (eg. my.project)
-8. Click the __Finish__ button.
-
-## 1.2 Create a .gitignore
-
-1. Right-click on the project root in the Package Explorer. Select New -> File
-2. Name the file __.gitignore__ - note the period at the beginning of the name.
-2. The file will open in the editor. Paste the following text, then __Save__ the file.
-
-```
-# Ignore the compiled binaries folder
-bin/
-
-# Ignore Eclipse project settings
-.DS_Store
-.classpath
-.project
-.settings/
-
-#Ignore logs
-*.log
-
-#Ignore the contents of the maven target/ folder
-target/
-```
-_Note:_ If you look in the Project Explorer, the file will not appear. It is still there. If you want it to appear, you can [Edit Your Project Explorer Filter Settings](https://stackoverflow.com/questions/98610/how-can-i-get-eclipse-to-show-files).
-
-## 1.3 Install the Sentinel Jar
->__NOTE:__ This is a temporary solution until we can get the Sentinel jar in the Maven repo.
-
-1. Download the latest com.dougnoel.sentinel.jar OR create your own by cloning the [Sentinel repo](https://github.com/dougnoel/sentinel) and building it.
-2. Create a __lib__ directory.
-3. Inside the __lib__ directory create a __sentinel__ directory.
-4. Copy the ``sentinel-1.0.0.jar`` file into the __lib/sentinel__ directory.
-5. Install Sentinel to your local Maven Repo from the root of your project:
-
-```
-mvn install:install-file -Dfile=lib/sentinel/sentinel-1.0.0.jar -DgroupId=com.dougnoel -DartifactId=sentinel -Dversion=1.0.0 -Dpackaging=jar -DgeneratePom=true
-```
-
-## 1.4 Configure your pom.xml
-
-1. In the Eclipse Package Explorer double-click on the pom.xml to open it.
-2. At the bottom of the pom.xml are a number of tabs.
-3. Click the __Dependencies__ tab.
-4. Select __junit__ in the __Dependencies__ list and click the __Properties...__ button to the right.
-5. Change the __Version__ to __4.12__ and press the __OK__ button.
-6. Click the __pom.xml__ tab.
-7. Find the __dependencies__ section.
-8. Paste the following lines, updated for the version of Sentinel you are using into that section. (Use <kbd>⌘⇧F</kbd> (Mac) or Ctrl+Shift+F (Win) to format the entry.)
-
-```
-		<!-- Sentinel -->
-		<dependency>
-			<groupId>com.dougnoel</groupId>
-			<artifactId>sentinell</artifactId>
-			<version>1.0.0</version>
-		</dependency>
-```
-9. __Save__ the file.
-10. In the __Package Explorer__ Right-click on the project and select __Maven -> Update Project...__
-11. Make sure your Project is checked and click the __OK__ button.
-
-## 1.5 Manage Packages
-Maven creates some default files and packages we don't need, and we need to create a few that we will need. Specifically, we need to create a place to store page objects in the main section so that they can be compiled and shared between projects. While in our test section we need a place to store our Cucumber feature files and our test runner script.
-
-### 1.5.1 Remove Extraneous Default Packages
-1. In the __Package Explorer__ expand __src/main/java__.
-2. Right-click on the __com.com.dougnoel.sentinel.<projectname>__ package and select __Delete__.
-3. Click the __Ok__ button.
-4. In the __Package Explorer__ expand __src/test/java__.
-5. Expand the __com.com.dougnoel.sentinel.<projectname>__ package.
-6. Right-click the __AppTest.java__ file and select __Delete__.
-7. Click the __Ok__ button.
-
-### 1.5.2 Create Starting Packages
-1. In the __Package Explorer__ right-click on __src/main/java__ and select __New -> Package__.
-2. In the name field enter __com.com.dougnoel.sentinel.<projectname>.pages__
-3. Ensure ensure __Create package-info.java is checked.
-4. Press the __Finish__ button.
-5. In the __Package Explorer__ right-click on __src/test/java__ and select __New -> Folder__.
-6. In the name field enter __features__
-7. Ensure ensure __Create package-info.java is checked.
-8. Press the __Finish__ button.
-
-### 1.5.3 Copy Drivers and Configurations
-> Note: These are things that will go away in the future and the framework will handle invisibly.
-
-1. Copy the drivers folder from the Sentinel project to your project root (same level as src).
-2. Copy the conf folder from the Sentinel project to your project root (same level as src).
-3. Delete the log4j2.xml config file from the conf folder in your project.
-
-### 1.5.4 Create a com.dougnoel.sentinel.yml configuration file
-
-Create a file in the conf directory called 'com.dougnoel.sentinel.yml'. Here you will need to set values in order to run your tests. All configuration properties such as which browser and operating system to use during testing, saucelabs configuration, which page object packages you want to test, and other necessary values are to be set on an environment specific basis. 
+Create a file in the conf directory called 'sentinel.yml'. Here you will need to set values in order to run your tests. All configuration properties such as which browser and operating system to use during testing, saucelabs configuration, which page object packages you want to test, and other necessary values are to be set on an environment specific basis. 
 
 ##### **You must set browser, operating system (os) and pageObjectPackages values in order to run a test**
 
@@ -241,65 +144,6 @@ Scenario: TaskTicketNumber Loading a Page
 Given I am on the Sauce Labs Demo Page
 ```
 
-### 1.6.4 Create a Test Runner
-
-1. In the __Package Explorer__ expand __src/test/java__.
-2. Right-click on the __com.<yourdomain>.<projectname>__ package and select __New -> JUnit Test Case__.
-3. at the top select the __New JUnit 4 Test Case__ radio button.
-4. In the __Name__ field enter __ProjectNameTest__.
-5. Make sure the __setUpBeforeClass()__ and the __tearDownAfterClass()__ check boxes are checked.
-6. Make sure the __setUp()__ and the __tearDown()__ check boxes are _un_checked.
-7. Click the __Finish__ button.
-8. Paste the following into the editor and save the file.
-9. Uncomment and set the PageObjectPackages, browser and OS lines for your computer.
-
-Headers (insert after the package line and replace the current imports):
-
-```
-import java.io.File;
-
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.runner.RunWith;
-
-import com.cucumber.listener.Reporter;
-import com.dougnoel.com.dougnoel.sentinel.pages.PageManager;
-import com.dougnoel.com.dougnoel.sentinel.utils.WebDriverFactory;
-
-import cucumber.api.CucumberOptions;
-import cucumber.api.junit.Cucumber;
-
-@RunWith(Cucumber.class)
-@CucumberOptions(monochrome = true
-        , features = "src/test/java/features"
-        , glue = { "stepdefinitions", "com.dougnoel.sentinel.steps" }
-        , plugin = { "com.cucumber.listener.ExtentCucumberFormatter:reports/extent-cucumber-report.html" }
-//      , tags = { "@MYTAG-1" }
-)
-```
-Class Body (replace the current class body):
-
-```
-    @BeforeClass
-    public static void setUpBeforeClass() throws Exception {
-        System.setProperty("env", "prod");
-        System.setProperty("pageObjectPackages","pages, apis");
-//      System.setProperty("browser", "Chrome");
-//      System.setProperty("os", "OS X"); // Choose "Windows" or "OS X" or "Linux"
-        WebDriverFactory.instantiateWebDriver();
-    }
-
-    @AfterClass
-    public static void tearDownAfterClass() throws Exception {
-    	PageManager.quit();
-    	
-    	Reporter.loadXMLConfig(new File("conf/extent-config.xml"));
-        Reporter.setSystemInfo("user", System.getProperty("user.name"));
-        Reporter.setSystemInfo("os", System.getProperty("os"));
-        Reporter.setTestRunnerOutput("Sample test runner output message");
-    }
-
-```
 
 ### 1.6.5 Run your first test
 
@@ -320,7 +164,8 @@ INFO: Detected dialect: OSS
 
 ## 1.7 Check Your Code Into a Repository
 
-1. Follow the instructions for importing an existing project.
+1. Create a new repository.
+2. Check your code in.
 
 ## 2.0 Creating Tests
 
@@ -505,7 +350,7 @@ getting debug output while developing. The second is good for running in a CI/CD
 
 #### 4.1.1 Setting the Test Environment
 
-Create a file in the conf directory called 'com.dougnoel.sentinel.yml'. Here you will need to set values in order to run your tests. All configuration properties such as which browser and operating system to use during testing, saucelabs configuration, which page object packages you want to test, and other necessary values are to be set on an environment specific basis. 
+Create a file in the conf directory called 'sentinel.yml'. Here you will need to set values in order to run your tests. All configuration properties such as which browser and operating system to use during testing, saucelabs configuration, which page object packages you want to test, and other necessary values are to be set on an environment specific basis. 
 
 ##### **You must set browser and operating system values in order to run a test**
 
@@ -602,7 +447,7 @@ Additional features that you can use.
 
 ## 5.1 Logging in as a user.
 
-### 3.1.1 Editing the YAML
+### 5.1.1 Editing the YAML
 1. Open your PageName.yml file for the page you want to have users.
 2. Add in default users.
 

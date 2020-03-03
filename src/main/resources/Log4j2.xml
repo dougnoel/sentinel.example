@@ -4,7 +4,7 @@
 		<Property name="basePath">./logs</Property>
 	</Properties>
 	<Appenders>
-		<RollingFile name="File" fileName="${basePath}/app.log"
+		<RollingFile name="File" fileName="${basePath}/sentinel.log"
 			filePattern="${basePath}/app-%d{yyy-MM-dd}.log">
 			<PatternLayout
 				pattern="%d{HH:mm:ss.SSS} %-5level %c{2} (%13F:%L) - %msg%n" />
@@ -20,7 +20,7 @@
 		</Console>
 	</Appenders>
 	<Loggers>
-		<Root level="error">
+		<Root level="info">
 			<AppenderRef ref="Console" />
 			<AppenderRef ref="File" />
 		</Root>
