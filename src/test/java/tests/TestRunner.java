@@ -21,7 +21,7 @@ import cucumber.api.junit.Cucumber;
 //      , tags = { "@19" }
 )
 
-public class ExampleTest {
+public class TestRunner {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
