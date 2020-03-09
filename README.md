@@ -36,7 +36,7 @@ NOTE: All drivers are 64-bit versions. If you need to test on an old 32-bit brow
 
 * [Chromedriver](http://chromedriver.chromium.org/) 80.0.3987.106 (2020-02-13) - Driver for automating Google Chrome.
 * [Geckodriver](https://github.com/mozilla/geckodriver/releases) v0.26.0 (Oct 11 2019) - Driver for automating Mozilla Firefox.
-* [IE Driver](http://selenium-release.storage.googleapis.com/index.html) 3.9 (2018-02-05) - Driver for automating IE.
+* [IE Driver](http://selenium-release.storage.googleapis.com/index.html) 3.8.0 (2017-12-01) - Driver for automating IE.
 * [Safari](https://webkit.org/blog/6900/webdriver-support-in-safari-10/) - Safari driver is embedded in Safari.
 
 # Section 1: Creating A New Project
