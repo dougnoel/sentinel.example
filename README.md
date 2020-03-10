@@ -25,6 +25,7 @@ You can check the installation by opening up a terminal window and typing the fo
 cd ~/Projects/sentinel.example
 mvn test
 ```
+
 If chrome pops up and the tests run successfully, you are ready to move to Section 1.2.
 
 If you have issues with installation, refer to [MAC-INSTALL.md](MAC-INSTALL.md) for manual installation instructions.

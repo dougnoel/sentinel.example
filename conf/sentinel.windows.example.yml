@@ -1,7 +1,7 @@
 ---
 configurations:
   default:
-    pageObjectPackages: "com.saucedemo.pages,com.saucelabs.pages"
+    pageObjectPackages: "com.demoaut"
     os: "Windows"
     browser: "IE"
 ...
