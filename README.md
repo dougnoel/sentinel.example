@@ -68,7 +68,7 @@ If you already have all the tools installed (Git, Java, Maven), you can follow t
 
 1. On the command line/terminal, change to the directory you wish to check the project out into (recommended is Documents/Projects) and type `git clone https://github.com/dougnoel/sentinel.example.git`
 2. In the sentinel.example/conf directory there are a number of example configuration files. Copy the one for your operating system to a file titled `sentinel.yml`. Ensure the browser listed is one installed on your system.
-3. Change to the project (how do they change?) `cd sentinel.example` and run `mvn test`. Provided that the configuration file exists, the project will run.
+3. Change to the project by typing `cd sentinel.example` and pressing the Enter key. Then type `mvn test` and press the Enter key. Provided that the configuration file exists, the project will run.
 
 ## 1.3 Setting up the Project in Eclipse (10 minutes)
 
