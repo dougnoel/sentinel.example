@@ -1,14 +1,14 @@
 # Sentinel.Example 1.0.3
 Works with ![Sentinel](https://img.shields.io/github/v/release/dougnoel/sentinel?sort=semver&style=plastic)
 
-This project will walk you through setting up an automated testing framework using Sentinel which leverages Cucumber and Selenium without requiring programming knowledge. As this project has developed, more has been done to reduce the learning curve. The toll was initially meant to be used by Quality Assurance professionals wanting to learn how to program, but who also needed to get their job done. The approach was two-fold. First, make automation so easy that it can be written as quickly as manual testing, and run faster than manual testing. In doing so, freeing up your time to be able to learn. Second, it provides an entry point for coding by exposing some, but not all of the code in a manageable way, by encouraging you to create custom testing steps. As use of this project has grown, the importance of this example project has grown with it, as has the need for easier installation.
+This project will walk you through setting up an automated testing framework using Sentinel, which leverages Cucumber and Selenium without requiring programming knowledge. As this project has developed, more has been done to reduce the learning curve. The toll was initially meant to be used by Quality Assurance professionals wanting to learn how to program, but who also needed to get their job done. The approach was two-fold: first, make automation so easy that it can be written as quickly as manual testing, but run faster. This frees up time for learning. Second, by encouraging you to create custom testing steps, it provides an entry point for coding by exposing some, but not all of the code in a manageable way. As use of this project has grown, the importance of this example project has grown with it, as has the need for easier installation.
 
-It is worth noting for experienced Java developers, the Sentinel jar file can be included in your project's pom.xml and everything that is done here can be done inside your code, triggered as part of the testing phase of your build. You will have to mock up or stand up a web server to test against, but this project is intended to be a fully self-contained testing tool.
+For experienced Java developers, it's important to note that the Sentinel jar file can be included in your project's pom.xml and everything that is done here can be done inside your code, triggered as part of the testing phase of your build. You will have to mock up or stand up a web server to test against, but this project is intended to be a fully self-contained testing tool.
 
-A final note before you begin using this tool. A tool is only as useful as you make it. You can buy the best power drill on the market, but if your team insists everything be built with nails, the drill will be useless. Implementing this tool is about process and getting people to adopt both the tool and the process around it. I have spent 20 years implementing automated testing at companies. The lessons I have learned inform the writing of this tutorial. Pay attention to not only how to use this tool, but what I have written about how to get your team (both business and technical) to adopt it. If you implement this tool correctly, you will be a hero. Furthermore, you will be able to take this tool with you in your career. Once you start using this shiny new tool, you won't want it left on the shelf. Technical implementation isn't the hard part. Team adoption is the hard part.
+A final note before you begin using this tool. A tool is only as useful as you make it. You can buy the best power drill on the market, but if your team insists everything be built with nails, the drill will be useless. Implementing this tool is about process and getting people to adopt both the tool and the process around it. I have spent 20 years implementing automated testing at companies. The lessons I have learned inform the writing of this tutorial. Pay attention to not only how to use this tool, but what I have written about how to get your team (both business and technical) to adopt it. If you implement this tool correctly, you will be a hero. Furthermore, you will be able to take this tool with you in your career. Once you start using this shiny new tool, you won't want it left on the shelf. Technical implementation isn't the hard part - team adoption is the hard part.
 
 # Section 1: Getting Started (~30 minutes)
-This section will get you up and running, executing the example tests in 30 minutes or less. Most of the time investment is installing Git, Java, and Maven. If you have all those tools installed, it takes less than 10 minutes to get a test running. In that case, just skip to Section 1.2
+This section will get you up and running, executing the example tests in 30 minutes or less. Most of the time investment is installing Git, Java, and Maven. If you have all those tools installed, it takes less than 10 minutes to get a test running. If your tools are already installed, just skip to Section 1.2. Otherwise, see below:
 
 ## 1.1 Prerequisites
 You will need to have the following tools installed to use the project:
@@ -18,9 +18,9 @@ You will need to have the following tools installed to use the project:
  * Google Chrome (Recommended)
  * Eclipse (Recommnded)
  
-You can find installation scripts for these tools and installation instructions below. **NOTE:** These instructions and the accompanying installation scripts are provided AS IS. You may log tickets to improve the efficacy of the instructions or script, but there is no support for the scripts. They are being provided to help users who are not developers install development tools. If you are having difficulty installing any of these tools, please refer to the makers of these tools. Links to the makers of these tools are provided in [MAC-INSTALL.md](MAC-INSTALL.md) and [WIN-INSTALL.md](WIN-INSTALL.md).
+You can find installation scripts for these tools and installation instructions below. **NOTE:** These instructions and the accompanying installation scripts are provided AS IS. You may log tickets to improve the efficacy of the instructions or script, but there is no support for the scripts - they are being provided to help users who are not developers install development tools. If you are having difficulty installing any of these tools, please refer to the makers of these tools. Links to the makers of these tools are provided in [MAC-INSTALL.md](MAC-INSTALL.md) and [WIN-INSTALL.md](WIN-INSTALL.md).
 
-If you already have these tools installed, you can clone the sentinel.example project and move directly to Section 1.2. It is recommended that you use google chrome for initial setup. It is also suggested you use Eclipse as your IDE, as all the instructions are written for Eclipse. If you are familiar with IntelliJ or another editor, it is assumed you are knowledgeable enough to get the project working in your IDE without detailed instructions.
+If you already have these tools installed, you can clone the sentinel.example project and move directly to Section 1.2. It is recommended that you use Google Chrome for initial setup. It is also suggested you use Eclipse as your IDE (development environment), as all the instructions are written for Eclipse. If you are familiar with IntelliJ or another editor, it is assumed you are knowledgeable enough to get the project working in your IDE without detailed instructions.
 
 ### 1.1.1 Mac Installation (5 - 20 minutes)
 Navigate to [sentinel.examples's release page](https://github.com/dougnoel/sentinel.example/releases) and download the **mac-install.command** file. Double-click on the file and everything you need will be automatically installed.
@@ -32,7 +32,7 @@ cd ~/Projects/sentinel.example
 mvn test
 ```
 
-If chrome pops up and the tests run successfully, you are ready to move to Section 1.2.
+If Google Chrome pops up and the tests run successfully, you are ready to move to Section 1.2.
 
 If you have issues with installation, refer to [MAC-INSTALL.md](MAC-INSTALL.md) for manual installation instructions.
 
@@ -45,9 +45,9 @@ You can check the installation by opening up a command window and typing the fol
 cd %HOMEPATH%\Projects\sentinel.example
 mvn test
 ```
-If chrome pops up and the tests run successfully, you are ready to move to Section 1.2.
+If Google Chrome pops up and the tests run successfully, you are ready to move to Section 1.2.
 
-If you have issues with installation, 
+If you have issues with installation, refer to the individual tool manufacturers. (?)
 
 ### 1.1.3 Linux Installation (5 - 20 minutes)
 There is no installation script for Linux as different flavors have different package managers. (You are encouraged to contribute a shell script for installing tools on you os.) After installing the appropriate tools, cd to the directory you want the project in and clone the repo.
@@ -59,16 +59,16 @@ cp conf/sentinel.linux.example.yml conf/sentinel.yml
 mvn test
 ```
 
-If chrome pops up and the tests run successfully, you are ready to move to Section 1.2.
+If Google Chrome pops up and the tests run successfully, you are ready to move to Section 1.2.
 
 If you have issues with installation, refer to the individual tool manufacturers.
 
-## 1.2 Running the Example Tests on the Command Line
+## 1.2 Running the Example Tests on the Command Line (Terminal for Mac Users)
 If you already have all the tools installed (Git, Java, Maven), you can follow the following instructions on any operating system to get running quickly.
 
-1. On the command line change to the directory you wish to check the project out in and type `git clone https://github.com/dougnoel/sentinel.example.git`
-2. In the sentinel.example/conf directory there are a number of example configuration files. Copy the one for your operating system to a file titled `sentinel.yml`. Ensure the browser listed is one installed on your system.
-3. Change to the project `cd sentinel.example` and run `mvn test`. Provided that the configuration file exists, the project will run.
+1. On the command line/terminal, change to the directory you wish to check the project out (how do they determine which directory? Do non-technical readers know what a directory is? Is there a recommended one to use?) in and type `git clone https://github.com/dougnoel/sentinel.example.git`
+2. In the sentinel.example/conf directory there are a number of example configuration files. Copy the one for your operating system (do readers know which one aligns to their operating system?) to a file titled `sentinel.yml`. Ensure the browser listed is one installed on your system.
+3. Change to the project (how do they change?) `cd sentinel.example` and run `mvn test`. Provided that the configuration file exists, the project will run.
 
 ## 1.3 Setting up the Project in Eclipse (10 minutes)
 
@@ -79,15 +79,15 @@ If you already have all the tools installed (Git, Java, Maven), you can follow t
 5. Right-Click on the project in the Project Explorer.
 6. Maven -> Update Project...
 7. Wait for the status bar in the lower right-hand corner to finish before continuing.
-8. In the Project Explorer Expand sentinel.example -> src/test/java -> tests
+8. In the Project Explorer, Expand sentinel.example -> src/test/java -> tests
 9. Right-click on TestRunner.java and select Run As -> JUnit Test
 
 If a browser pops up and the tests run successfully, you have successfully imported the project and are ready to build tests.
 
 # Section 2: Writing Your First Test (~2 hours)
-Writing a test starts before any code is written. When a user story is created, a ticket should have Acceptance Criteria that describe what the product owner expects the feature to do. Writing good Acceptance Criteria is about communicating what you expect to happen when development on a user story is complete. Good Acceptance Criteria act as your discussion points for clarifying stories, your test cases for automated testing, and your bug reports. After Acceptance criteria are written by the product owner, they should be agreed upon by the product owners, development and QA *before* the ticket is accepted into a sprint. Once a ticket is in a sprint, you will tweak the Acceptance Criteria to match the Gherkin steps that are already defined so that you do not have to write new code.
+Writing a test starts before any code is written. When a user story is created, a ticket (what's a ticket? assumption - a user story?) should have Acceptance Criteria that describe what the product owner expects the feature to do. Writing good Acceptance Criteria is about communicating what you expect to happen when development on a user story is complete. Good Acceptance Criteria act as your discussion points for clarifying stories, your test cases for automated testing, and your bug reports. After Acceptance criteria are written by the product owner, they should be agreed upon by the product owners, development team members, and QA *before* the ticket is accepted into a sprint. Once a ticket is in a sprint, you will tweak the Acceptance Criteria to match the Gherkin steps that are already defined so that you do not have to write new code.
 
-It is important that the entire team be a part of this process. It is ok as the QA team member to write a few examples of acceptance criteria when convincing a team to adopt this tool. However, you must get the team on board with writing the criteria as a whole - as part of backlog grooming, *or the implementation of automation will ultimately fail.* **The entire team must be involved** in the creation of the steps so that the entire scope of testing is understood. The Acceptance Criteria are a QA Engineer's ticket description. Without them, the scope of the automation being written will change in Sprints, and you will ultimately find yourself falling behind as work piles up. Just like it is unreasonable to expect developers to have any accuracy in story estimates if the stories are not defined before starting a sprint, you cannot expect quality assurance automation developers to have accuracy in story estimates if the acceptance criteria are not defined before starting a sprint.
+It is important that the entire team be a part of this process. It is acceptable as the QA team member to write a few examples of acceptance criteria when convincing a team to adopt this tool. However, you must get the team on board with writing the criteria as a whole - as part of backlog grooming *or the implementation of automation will ultimately fail.* **The entire team must be involved** in the creation of the steps so that the entire scope of testing is understood. The Acceptance Criteria are a QA Engineer's ticket description. Without them, the scope of the automation being written will change in Sprints, and you will ultimately find yourself falling behind as work piles up. Just like it is unreasonable to expect developers to have any accuracy in story size estimates if the stories are not defined before starting a sprint, you cannot expect quality assurance automation developers to have accuracy in story estimates if the acceptance criteria are not defined before starting a sprint.
 
 Acceptance criteria should be written as part of the ticket they are testing. Once you get used to using this tool, you will find that automating inside a sprint will be easy to do. Resist the urge to split stories or create testing stories that are different from development stories. If a story is too large to both develop and test in a single sprint, it is too large to finish in a sprint. This is either a problem of poorly defined stories, or poorly designed architecture. Both of these issues should be tackled as you encounter them. Pushing the problems off will prevent you from being successful and kill your automation effort. Additionally, acceptance criteria should be a part of the ticket you are testing so that the feature file can be tied to the same ticket number to which the code is tied. (Your developers *are* including ticket numbers when they check their code in, aren't they? If not, fix this now - it's an idea that's more than 20 years old.) Every testing scenario in a feature should have its own task ticket number, so that different people can code each task, but more importantly - every test can be run independently.
 
