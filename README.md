@@ -1,11 +1,11 @@
 # Sentinel.Example 1.0.3
 Works with ![Sentinel](https://img.shields.io/github/v/release/dougnoel/sentinel?sort=semver&style=plastic)
 
-This project will walk you through setting up an automated testing framework using Sentinel, which leverages Cucumber and Selenium without requiring programming knowledge. As this project has developed, more has been done to reduce the learning curve. The toll was initially meant to be used by Quality Assurance professionals wanting to learn how to program, but who also needed to get their job done. The approach was two-fold: first, make automation so easy that it can be written as quickly as manual testing, but run faster. This frees up time for learning. Second, by encouraging you to create custom testing steps, it provides an entry point for coding by exposing some, but not all of the code in a manageable way. As use of this project has grown, the importance of this example project has grown with it, as has the need for easier installation.
+This project will walk you through setting up an automated testing framework using Sentinel, which leverages Cucumber and Selenium without requiring programming knowledge. As this project has developed, more has been done to reduce the learning curve. The tool was initially meant to be used by Quality Assurance professionals wanting to learn how to program, but who also needed to get their job done. The approach was two-fold: first, make automation so easy that it can be written as quickly as manual testing, but run faster. This frees up time for learning. Second, by encouraging you to create custom testing steps, it provides an entry point for coding by exposing some, but not all of the code in a manageable way. As use of this project has grown, the importance of this example project has grown with it, as has the need for easier installation.
 
 For experienced Java developers, it's important to note that the Sentinel jar file can be included in your project's pom.xml and everything that is done here can be done inside your code, triggered as part of the testing phase of your build. You will have to mock up or stand up a web server to test against, but this project is intended to be a fully self-contained testing tool.
 
-A final note before you begin using this tool. A tool is only as useful as you make it. You can buy the best power drill on the market, but if your team insists everything be built with nails, the drill will be useless. Implementing this tool is about process and getting people to adopt both the tool and the process around it. I have spent 20 years implementing automated testing at companies. The lessons I have learned inform the writing of this tutorial. Pay attention to not only how to use this tool, but what I have written about how to get your team (both business and technical) to adopt it. If you implement this tool correctly, you will be a hero. Furthermore, you will be able to take this tool with you in your career. Once you start using this shiny new tool, you won't want it left on the shelf. Technical implementation isn't the hard part - team adoption is the hard part.
+A final note before you begin using this tool: A tool is only as useful as you make it. You can buy the best power drill on the market, but if your team insists everything be built with nails, the drill will be useless. Implementing this tool is about process and getting people to adopt both the tool and the process around it. I have spent 20 years implementing automated testing at companies. The lessons I have learned inform the writing of this tutorial. Pay attention to not only how to use this tool, but what I have written about how to get your team (both business and technical) to adopt it. If you implement this tool correctly, you will be a hero. Furthermore, you will be able to take this tool with you in your career. Once you start using this shiny new tool, you won't want it left on the shelf. Technical implementation isn't the hard part - team adoption is the hard part.
 
 # Section 1: Getting Started (~30 minutes)
 This section will get you up and running, executing the example tests in 30 minutes or less. Most of the time investment is installing Git, Java, and Maven. If you have all those tools installed, it takes less than 10 minutes to get a test running. If your tools are already installed, just skip to Section 1.2. Otherwise, see below:
@@ -16,7 +16,8 @@ You will need to have the following tools installed to use the project:
  * Java (1.8)
  * Maven (2.5.4 or later)
  * Google Chrome (Recommended)
- * Eclipse (Recommnded)
+ * Eclipse (Recommended)
+ * Cucumber (TBD)
  
 You can find installation scripts for these tools and installation instructions below. **NOTE:** These instructions and the accompanying installation scripts are provided AS IS. You may log tickets to improve the efficacy of the instructions or script, but there is no support for the scripts - they are being provided to help users who are not developers install development tools. If you are having difficulty installing any of these tools, please refer to the makers of these tools. Links to the makers of these tools are provided in [MAC-INSTALL.md](MAC-INSTALL.md) and [WIN-INSTALL.md](WIN-INSTALL.md).
 
@@ -84,25 +85,30 @@ If you already have all the tools installed (Git, Java, Maven), you can follow t
 
 If a browser pops up and the tests run successfully, you have successfully imported the project and are ready to build tests.
 
-# Section 2: Writing Your First Test (~2 hours) (what is a ticket? Is this a Jira term?)
+# Section 2: Writing Your First Test (~2 hours) 
+Before we begin, it's important we identify some key terms. Depending on the tool you're using, there will be different terminology to refer to work items. 
+"Ticket" in the Jira tracking tool equates to Agile User Stories 
+Ticket ID's refer to the user story ID number
+"Feature" refers to Agile User Stories in Cucumber
+
 Writing a test starts before any code is written. When a user story is created, a ticket should have Acceptance Criteria that describe what the product owner expects the feature to do. Writing good Acceptance Criteria is about communicating what you expect to happen when development on a user story is complete. Good Acceptance Criteria act as your discussion points for clarifying stories, your test cases for automated testing, and your bug reports. After Acceptance criteria are written by the product owner, they should be agreed upon by the product owners, development team members, and QA *before* the ticket is accepted into a sprint. Once a ticket is in a sprint, you will tweak the Acceptance Criteria to match the Gherkin steps that are already defined so that you do not have to write new code.
 
 It is important that the entire team be a part of this process. It is acceptable as the QA team member to write a few examples of acceptance criteria when convincing a team to adopt this tool. However, you must get the team on board with writing the criteria as a whole - as part of backlog grooming *or the implementation of automation will ultimately fail.* **The entire team must be involved** in the creation of the steps so that the entire scope of testing is understood. The Acceptance Criteria are a QA Engineer's ticket description. Without them, the scope of the automation being written will change in Sprints, and you will ultimately find yourself falling behind as work piles up. 
 Just like it is unreasonable to expect developers to have any accuracy in story size estimates if the stories are not defined before starting a sprint, you cannot expect quality assurance automation developers to have accuracy in story estimates if the acceptance criteria are not defined before starting a sprint.
 
-Acceptance criteria should be written as part of the ticket they are testing. Once you get used to using this tool, you will find that automating inside a sprint will be easy to do. Resist the urge to split stories or create testing stories that are different from development stories. If a story is too large to both develop and test in a single sprint, it is too large to finish in a sprint. This is either a problem of poorly defined stories, or poorly designed architecture. Both of these issues should be tackled as you encounter them. Pushing the problems off will prevent you from being successful and kill your automation effort. 
+Acceptance criteria should be written as part of the ticket the team is testing. Once you get used to using this tool, you will find that automating inside a sprint will be easy to do. Resist the urge to split development and testing in stories or create testing stories that are different from development stories. If a story is too large to both develop and test in a single sprint, it is too large to finish in a sprint. This is either a problem of poorly defined stories, or poorly designed architecture. Both of these issues should be tackled as you encounter them. Pushing the problems off will prevent you from being successful and kill your automation effort. 
 Additionally, acceptance criteria should be a part of the ticket you are testing so that the feature file can be tied to the same ticket number to which the code is tied. (Your developers *are* including ticket numbers when they check their code in, aren't they? If not, fix this now - it's an idea that's more than 20 years old.) Every testing scenario in a feature should have its own task ticket number, so that different people can code each task, but more importantly - every test can be run independently.
 
 Finally, a note about functional versus data testing. Functional testing is testing the functionality of your code. Data testing is testing the data your clients/customers/users are pushing through your system. Data testing is often conflated with functional testing, which bloats tests. An example of functional testing is making sure that special characters are allowed in a password. An example of data testing is making sure that special characters are allowed for normal users, admin users, and super users. There is no functional difference between the way these three user types log in to a site. However a business owner may have once had trouble logging in, and they want tests for each type of user. Doing so does not improve testing. In actually causes testing take longer, creates fragility in the framework (more tests to fail), and causes more noise when a feature fails. 
 If you tested all three scenarios, if one fails, they will all fail. It will appear to anyone who sees the results that three bugs were found, instead of just one. The counter argument to this is, "What if?" "What if one of the user roles does fail when the others pass?" In this case you log the bug and you discuss with your team why it happened, and how to prevent it in the future. Creating a test to cover this scenario is a band-aid fix. The problem is architectural and should be addressed at that level. When you create a test, it should be atomic (meaning it doesn't rely on data from other scenarios) and unique.
 
 ## 2.1 Creating A Story and Task Tickets
-The first test of any web site is logging into the site. So for our first test, we will be creating a login feature. We will be using the [New Tours Login](https://github.com/dougnoel/sentinel.example/issues/16) as an example. Clicking [this link](https://github.com/dougnoel/sentinel.example/issues/16) will take you to the ticket we created for our example feature. The first thing to do will be to create a similar ticket in your ticketing system, but instead of for the New Tours web site, make it for the web site you are testing. We are going to make two initial tests - one for a [successful login](https://github.com/dougnoel/sentinel.example/issues/17), and one for a [failed login](https://github.com/dougnoel/sentinel.example/issues/18). Create two tasks on your login story to track these. (If your system doesn't have tasks, just create two additional tickets as we have done and reference them in your parent story.) <-- need to update terminology or establish at the beginning. Ticket vs Story, Epic vs Feature. Ticket vs tasks?
+The first test of any web site is logging into the site. So for our first test, we will be creating a login feature. We will be using the [New Tours Login](https://github.com/dougnoel/sentinel.example/issues/16) as an example. Clicking [this link](https://github.com/dougnoel/sentinel.example/issues/16) will take you to the ticket we created for our example feature. The first thing to do will be to create a similar ticket in your ticketing system, but instead of for the New Tours web site, make it for the web site you are testing. We are going to make two initial tests - one for a [successful login](https://github.com/dougnoel/sentinel.example/issues/17), and one for a [failed login](https://github.com/dougnoel/sentinel.example/issues/18). Create two tasks on your login story to track these. (If your system doesn't have tasks, just create two additional tickets as we have done and reference them in your parent story.)
 
 These tickets don't have to be perfect. Copy what you see and make your best guess to modify them for your own system. We can update the tickets as we refine the steps, so it isn't important to get them right the first time. In fact, most of the time you will be tweaking the tickets as you implement your automation. It's good to get used to that now. Later on, we will be going into more detail about the specifics of the Gherkin language.
 
-## 2.2 Creating a Cucumber Test (this section needs to be updated to reflect neither Jira nor Rally terminology to avoid confusion)
-Now that we have a ticket created, we can create our first feature file. It's important to note that we use what Cucumber calls a feature file to match what Agile typically calls a user story (ticket in Jira). Depending on where you work, a story may roll up to an epic, or it may roll up to a feature, then an epic, or something else. For our purposes, a feature file contains one story and a number of test scenarios. The purpose of this is to keep our tests as small and atomic as possible. If we let our feature files cover too much, they tend to get too complex, these slow our testing down, and feature creep starts overrunning our tests.
+## 2.2 Creating a Cucumber Test 
+Now that we have a ticket created, we can create our first feature file. As a reminder, it's important to note that we use what Cucumber calls a feature file to match what Agile typically calls a user story. Depending on where you work, a story may roll up to an epic, or it may roll up to a feature, then an epic, or something else. For our purposes, a feature file contains one story and a number of test scenarios. The purpose of this is to keep our tests as small and atomic as possible. If we let our feature files cover too much, they tend to get too complex, these slow our testing down, and feature creep starts overrunning our tests.
 
 Feature file names should start with a story ticket number, then have the full text on the Summary field, followed by __.feature__ as the file extension. (NOTE: Any colons (:), forward slashes (/) or backward slashes (\) should be removed from the name of the file as they are not compatible across operating systems and can cause your tests to fail on other machines even if they do not fail on your machine.) 
 
@@ -142,7 +148,7 @@ Feature: {StoryTicketNumber} {Subject of your Ticket}
 ```
 
 ### 2.2.2 Feature Section 
-A feature in Cucumber is equal to an agile user story. This equivalence is made to keep your feature files manageable. If your feature files are too large, this is an indication that either you are not using them correctly (multiple stories per story), your stories are too large (something to bring up with your team), or you are not pruning old tests. When adding a story that modifies an existing, story do not add in all the same tests again. Instead, use the power of tagging to tag the other features or scenarios affected with additional tags (see below about tags). If a feature is removed - remove the tests.
+If your feature files are too large, this is an indication that either you are not using them correctly (multiple stories per story), your stories are too large (something to bring up with your team), or you are not pruning old tests. When adding a story that modifies an existing story, do not add in all the same tests again. Instead, use the power of tagging to tag the other features or scenarios affected with additional tags (see below about tags). If a feature is removed - remove the tests.
 
 ```
 #Author: {your.email@yourdomain.com}
@@ -168,7 +174,7 @@ You can also paste in the description of the ticket, as long as none of the Cucu
 A background section is something you can add at the top of a feature file like a scenario. It will be run before every scenario in the file. We are not doing this here because it has limited utility. You can read more about the background keyword [here](https://cucumber.io/docs/gherkin/reference/)].
 
 ### 2.2.4 Scenario Section
-A scenario is a use case, or test case, for a given story. It should be atomic and unique. This means that it should not rely on data being set up outside of itself, and it should not duplicate the steps of another test with slightly different results. A common mistake is in thinking that because automated testing can easily test every iteration of a data set, that it should.
+A scenario is a use case, or test case for a given story. It should be atomic and unique. This means that it should not rely on data being set up outside of itself, and it should not duplicate the steps of another test with slightly different results. A common mistake is in thinking that because automated testing can easily test every iteration of a data set, that it should.
 
 A scenario is intended to be easily readable by humans - not just the automation. Taking care to write good-looking tests makes them easily readable by people. 50% of the time, the person you are formatting it for is your future self. When you come back to read a test, you do not want to spend a lot of time figuring out what is going on. The indentation is intended to make your tests easy to understand and to make them look professional to the business when they see the test results. You wouldn't send an email to someone in the business that had poor spelling and punctuation and no paragraph breaks. The formatting of your tests is a reflection on your own communication skills. This is especially important if English is not your first language. Formatting your tests well will make you look more professional. The steps themselves already enforce good grammar and spelling.
 
@@ -257,7 +263,7 @@ public class NewToursMenuPage extends Page {
 ### 2.3.1 Web Element Selectors
 
 #### 2.3.1.1 Inspecting a Web Page in Chrome
-Before we can create a Page Element (what is a page element?), we need to find an element on a web page.
+Before we can create a Page Element, we need to find an element on a web page.
 1. Open up your web page in Chrome.
 2. Right-click on the element you want to use to create a Page Element and select __Inspect__. The Chrome debug console will appear.
 3. Examine the element and determine how you want to identify it. (See the next few sections for all the possible identifiers.)
@@ -316,7 +322,7 @@ public class MyNewPage extends Page {
 ## 2.4 Creating a Page Object Configuration File
 >__NOTE:__ Vault server access has not been coded yet.
 
-URLs and credentials can be read from a config file or a Vault server. To start, we will use a simple Yaml configuration file. (what is yaml? I have a vague idea of it as a syntax from prior experience with swagger but others may not)
+URLs and credentials can be read from a config file or a Vault server. To start, we will use a simple Yaml configuration file.
 
 1. In the __Package Explorer__ expand __src/main/java__.
 2. Right-click the page you made in __Section 1.5.1__ and select __Copy__.
@@ -573,7 +579,7 @@ public class TestAPI extends API {
 ```
 
 ### 6.1.3 Add an action
-You add an action by creating a function that returns an action type with a designated endpoint. There are three kinds: GET, POST and PUT. (what are the differences? Do we need to include that here?) For example if I had an endpoint of "todos" that used a GET action to retrieve a list of items I would use the following:
+You add an action by creating a function that returns an action type with a designated endpoint. There are three kinds: GET, POST and PUT. For example if I had an endpoint of "todos" that used a GET action to retrieve a list of items I would use the following:
 
 ```
 package apis;
