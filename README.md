@@ -71,18 +71,54 @@ If you already have all the tools installed (Git, Java, Maven), you can follow t
 3. Change to the project `cd sentinel.example` and run `mvn test`. Provided that the configuration file exists, the project will run.
 
 ## 1.3 Setting up the Project in Eclipse (10 minutes)
+Eclipse is the recommended IDE.
 
+### 1.3.1 Installing Plugins
+Eclipse does not come with editors for Cucumber or YAML files. The following instructions will install them. Follow the instructions twice, once for **Cucmber** and once for **YAML**. When making choices, the recommendation is using the Cucmber Eclipse Plugin and YAML Editor, but use any plugin you prefer.
+
+1. Go to **Help** -> **Eclipse Marketplace**
+2. In the **Find:** search box enter **Cucumber** or **YAML** and press **ENTER**.
+3. Select a plugin and click the **Install** button.
+4. On the warning dialog, click the **Install Anyway** button.
+5. Click **Finish** and install the software.
+6. Wait for the status bar and percentage complete in the lower right-hand corner to finish before continuing.
+7. When Eclipse prompts you to restart, say **Yes**.
+
+Repeat for the next plugin.
+
+### 1.3.2 Opening and Configuring the Project 
 1. Open Eclipse
 2. File -> Open Projects from File system...
 3. Next to Import Source, click the Directory button and browse to the installed location.
 4. Click the Finish button.
-5. Right-Click on the project in the Project Explorer.
-6. Maven -> Update Project...
-7. Wait for the status bar in the lower right-hand corner to finish before continuing.
+5. Right-Click on the project in the **Package Explorer**.
+6. Select **Maven -> Update Project...**
+7. Click **Ok** in the dialog that appears.
+7. Wait for the status bar and percentage complete in the lower right-hand corner to finish before continuing.
 8. In the Project Explorer Expand sentinel.example -> src/test/java -> tests
 9. Right-click on TestRunner.java and select Run As -> JUnit Test
 
 If a browser pops up and the tests run successfully, you have successfully imported the project and are ready to build tests.
+
+### 1.3.3 Updating the Sentinel Version
+1. Open the pom.xml
+2. Edit the version of sentinel in the pom.xml file and change it to the new version number. (If the new version is a snapshot, it will look like `1.0.4-SNAPSHOT`, otherwise something like `1.0.3`.) Save the file.
+3. Right-Click on the project in the **Package Explorer**.
+4. Select **Maven -> Update Project...**
+5. Click **Ok** in the dialog that appears.
+6. Wait for the status bar and percentage complete in the lower right-hand corner to finish before continuing.
+
+In the example below, chage the version by replacing 1.0.4 in the `<version>` tags with the new version number before saving.
+
+Example:
+
+```
+		<dependency>
+			<groupId>com.dougnoel</groupId>
+			<artifactId>sentinel</artifactId>
+			<version>1.0.3</version>
+		</dependency>
+```
 
 # Section 2: Writing Your First Test (~2 hours)
 Writing a test starts before any code is written. When a user story is created, a ticket should have Acceptance Criteria that describe what the product owner expects the feature to do. Writing good Acceptance Criteria is about communicating what you expect to happen when development on a user story is complete. Good Acceptance Criteria act as your discussion points for clarifying stories, your test cases for automated testing, and your bug reports. After Acceptance criteria are written by the product owner, they should be agreed upon by the product owners, development and QA *before* the ticket is accepted into a sprint. Once a ticket is in a sprint, you will tweak the Acceptance Criteria to match the Gherkin steps that are already defined so that you do not have to write new code.
