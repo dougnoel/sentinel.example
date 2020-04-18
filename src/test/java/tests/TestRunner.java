@@ -37,7 +37,7 @@ public class TestRunner {
         Reporter.loadXMLConfig(new File("conf/extent-config.xml"));
         Reporter.setSystemInfo("user", System.getProperty("user.name"));
         Reporter.setSystemInfo("os", System.getProperty("os"));
-        Reporter.setTestRunnerOutput("Sample test runner output message");
+        Reporter.setTestRunnerOutput("Sentinel test runner output");
     }
 
 }
