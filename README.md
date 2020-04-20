@@ -534,9 +534,23 @@ the config file, you can set on the command line. If you find yourself testing m
 
 ## 3.4 Debugging Tools
 
-### 3.4.1 Running Specific Features or Scenarios
+### 3.4.1 Logging Levels
+Sentinel normally runs with the logging level set to INFO.
 
-### 3.4.2 Running Tests Against a Local Dev Server
+1. Open src/main/resources/Log4j2.xml
+2. Edit line 23 `<Root level="info">` and change "info" to match the logging level below that you want to use.
+
+| Logging Level | Description | Performance Effects |
+|---------------|-------------|---------------------|
+| error | Only show error messages. Suppress all other logs. | Using this may slightly increase performance. |
+| warn  | Only show errors and warnings. | Little effect on performance as there are few info messages. |
+| info  | Normal logging level. | Normal performance level. |
+| debug | Show all debug information. | Slightly slower performance. Only turn this on when debugging a problem. |
+| trace | Show all trace information. Very noisy. | Slows performance more. Only turn this on to debug a problem. |
+
+### 3.4.2 Running Specific Features or Scenarios
+
+### 3.4.3 Running Tests Against a Local Dev Server
 
 # Section 4: Using Existing Cucumber Steps
 
