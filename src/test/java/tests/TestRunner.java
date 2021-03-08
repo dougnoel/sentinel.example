@@ -18,11 +18,11 @@ import io.cucumber.junit.Cucumber;
 @RunWith(Cucumber.class)
 @CucumberOptions(monochrome = true
 	, features = "src/test/java/features"
-	, glue = { "stepdefinitions", "com.dougnoel.sentinel.steps" }
+	, glue = { "stepdefinitions", "com.dougnoel.sentinel.steps", "steps" }
 	, plugin = {"json:target/cucumber.json",
 			"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
 	, strict = true
-//      , tags = { "@19" }
+//      , tags = { "@48" }
 )
 
 public class TestRunner {
@@ -30,8 +30,6 @@ public class TestRunner {
     
     @BeforeClass
     public static void setUpBeforeClass() throws IOException, SentinelException {
-        System.setProperty("org.freemarker.loggerLibrary", "none");
-        System.setProperty("env", "demo"); // Set the environment (dev/qa/stage/prod/etc)
         WebDriverFactory.instantiateWebDriver();
     }
 
