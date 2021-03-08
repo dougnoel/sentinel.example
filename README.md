@@ -13,7 +13,7 @@ This section will get you up and running, executing the example tests in 30 minu
 ## 1.1 Prerequisites
 You will need to have the following tools installed to use the project:
  * Git
- * Java (1.8)
+ * Java (11)
  * Maven (2.5.4 or later)
  * Google Chrome (Recommended)
  * Eclipse (Recommnded)
@@ -124,7 +124,7 @@ If a browser pops up and the tests run successfully, you have successfully impor
 5. Click **Ok** in the dialog that appears.
 6. Wait for the status bar and percentage complete in the lower right-hand corner to finish before continuing.
 
-In the example below, chage the version by replacing 1.0.4 in the `<version>` tags with the new version number before saving.
+In the example below, change the version by replacing 1.0.4 in the `<version>` tags with the new version number before saving.
 
 Example:
 
@@ -132,7 +132,7 @@ Example:
 		<dependency>
 			<groupId>com.dougnoel</groupId>
 			<artifactId>sentinel</artifactId>
-			<version>1.0.3</version>
+			<version>1.0.4</version>
 		</dependency>
 ```
 
@@ -400,7 +400,7 @@ Create a file in the conf directory called 'sentinel.yml'. Here you will need to
 
 ##### **You must set browser and operating system values in order to run a test**
 
- The below example is taken from the example configuration file in the conf directory called com.dougnoel.sentinel.example.yml.
+ The below example is taken from the example configuration file in the conf directory called sentinel.example.yml.
 
 ```
 ---
@@ -423,7 +423,7 @@ configurations:
     saucelabsAccessKey: "apikey"
 ...
 ```
-Here are all the properties you can set in the com.dougnoel.sentinel.yml file:
+Here are all the properties you can set in the sentinel.yml file:
 
 ```
 | Property Name     |Possible Values                                                    |
