@@ -1,7 +1,0 @@
----
-configurations:
-  default:
-    pageObjectPackages: "com.demoaut"
-    os: "OS X"
-    browser: "chrome"
-...

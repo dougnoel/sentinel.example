@@ -1,0 +1,19 @@
+---
+configurations:
+  default:
+    name: "Sentinel"
+    user.name: "Me"
+    download: "download/Directory"
+    timeout: 10
+    timeunit: seconds
+    build: "1.0.3"
+    tags: "new_test"
+    os: "Windows 10"
+    browser: "chrome"
+    browserVersion: "latest"
+    driver: "src/main/resources/drivers/mac/chromedriver"
+    saucelabsUserName: "username"
+    saucelabsAccessKey: "apikey"
+    parent-tunnel: "tunnelname"
+    tunnelIdentifier: "tunnelID"
+...
