@@ -28,6 +28,7 @@ If you want to check this project out for your own base project execute the foll
 git clone https://github.com/dougnoel/sentinel.example.git myproject
 
 ```
+To create a new page object, right-click on src/main/java and create a new package for your website in reverse order. E.G. for https://google.com use `com.google`
 
 ### 1.1.1 Mac Installation (5 - 20 minutes)
 You will need the following prerequisites installed:
@@ -632,8 +633,6 @@ public class TestAPI extends API {
 }
 ```
 
-# Section 7: Frequently Asked Questions
-https://www.baeldung.com/eclipse-change-java-version
 # Section 7: Additional Information
 
 ## 7.1 Web Drivers
@@ -650,10 +649,15 @@ NOTE: All drivers are 64-bit versions. If you need to test on an old 32-bit brow
 
 We use [Semantic Versioning](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/dougnoel/sentinel.example/tags). 
 
-# 7.3 Authors
+# 7.3 Frequently Asked Questions
+
+## I imported the Sentinel or Sentinel.Example project and it's saying I have the wrong version of Java!
+Check out this hand-dandy link! [https://www.baeldung.com/eclipse-change-java-version](https://www.baeldung.com/eclipse-change-java-version)
+
+# 7.4 Authors
 
 * **Doug Noël** - *Architect* - Initial work.
 
-# 7.4 License
+# 7.5 License
 
 This project is licensed under the Apache Commons 2.0 License - see the [LICENSE.md](LICENSE.md) file for details
