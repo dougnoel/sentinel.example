@@ -15,12 +15,13 @@ The steps below will take you through manual installation of all the tools you n
 5. Run ChromeSetup.exe installer. Accept all the default options.
 6. Download the JDK
 7. Install the JDK
-8. Set the JAVA\_HOME variable.
+8. Set the JAVA\_HOME variable. [Click here for instructions.](https://www.codejava.net/java-core/how-to-set-java-home-environment-variable-on-windows-10)
 9. Download Maven
 10. Extract Maven to C:\Program Files\Maven
 11. Set the MAVEN\_HOME variable.
 12. Add %JAVA\_HOME%\bin;%MAVEN\_HOME%\bin to the PATH variable.
 13. Install [Eclipse SE](https://www.eclipse.org/).
+14. Open Eclipse and tell it to use a version later than 1.8 by default. [Instructions Here.](https://www.eclipse.org/eclipse/news/4.10/jdt.php#:~:text=Java%E2%84%A2%2011%20Support,-Eclipse%20support%20for&text=A%20Java%2011%20JRE%20is,using%20the%20project's%20context%20menu.) If you already imported the project, you will need to update the project settings by following [these instructions](https://www.baeldung.com/eclipse-change-java-version) as well.
 14. Open **File Explorer** and create a new folder called **Projects** in your home directory.
 15. Right-click the **Projects** folder and select **Open Git Bash here**. Click on the window that opens.
 16. Type `git clone https://github.com/dougnoel/sentinel.example.git` and hit ENTER.
