@@ -22,6 +22,13 @@ You can find installation scripts for these tools and installation instructions 
 
 If you already have these tools installed, you can clone the sentinel.example project and move directly to Section 1.2. It is recommended that you use google chrome for initial setup. It is also suggested you use Eclipse as your IDE, as all the instructions are written for Eclipse. If you are familiar with IntelliJ or another editor, it is assumed you are knowledgeable enough to get the project working in your IDE without detailed instructions.
 
+If you want to check this project out for your own base project execute the following commands:
+
+```
+git clone https://github.com/dougnoel/sentinel.example.git myproject
+
+```
+
 ### 1.1.1 Mac Installation (5 - 20 minutes)
 You will need the following prerequisites installed:
 - [Xcode](https://developer.apple.com/xcode/)
@@ -625,6 +632,8 @@ public class TestAPI extends API {
 }
 ```
 
+# Section 7: Frequently Asked Questions
+https://www.baeldung.com/eclipse-change-java-version
 # Section 7: Additional Information
 
 ## 7.1 Web Drivers
