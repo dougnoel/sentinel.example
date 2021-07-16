@@ -534,7 +534,7 @@ mvn -Dproperty="my value" test
 If you want to use tags you can include them like so:
 
 ```
-mvn -D"cucumber.options--tags @TAG-103,@TAG-449" test
+mvn -Dcucumber.options="--tags @106" test
 ```
 
 You will only have to do this the first time you run a test with a certain set of configurations. Any property you can set in 
