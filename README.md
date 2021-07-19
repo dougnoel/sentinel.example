@@ -1,11 +1,22 @@
 # Sentinel.Example 1.0.7-SNAPSHOT
-Works with ![Sentinel](https://img.shields.io/github/v/release/dougnoel/sentinel?sort=semver&style=plastic)
+Works with ![Sentinel](https://img.shields.io/github/v/release/dougnoel/sentinel?color=gree&include_prereleases&style=plastic)
 
-This project will walk you through setting up an automated testing framework using Sentinel which leverages Cucumber and Selenium without requiring programming knowledge. As this project has developed, more has been done to reduce the learning curve. The toll was initially meant to be used by Quality Assurance professionals wanting to learn how to program, but who also needed to get their job done. The approach was two-fold. First, make automation so easy that it can be written as quickly as manual testing, and run faster than manual testing. In doing so, freeing up your time to be able to learn. Second, it provides an entry point for coding by exposing some, but not all of the code in a manageable way, by encouraging you to create custom testing steps. As use of this project has grown, the importance of this example project has grown with it, as has the need for easier installation.
+# Why should I use this?
+1. It's open source and therefore free to use.
+2. It requires no programming knowledge to get started, but allows you to program your own testing steps as needed.
+3. It allows multiple selectors for your elements, allowing you to test multiple sets of code in different environments with the same code.
+4. It dynamically waits for you, loading things as quickly as possible, and freeing your time to write tests.
+5. All testing output can be understood by business users, and test results can be used as reproducible steps for bugs without further investigation, making bug writing simple and easy.
+6. Page objects are easily understandable text (Yaml) files instead of coded objects. Page objects are dynamically created for you.
+7. Web Drivers are handled for you, and drivers are automatically downloaded and installed for any browser you have installed and want to use.
+8. Reports are generated for you so you can show results with your first test.
 
-It is worth noting for experienced Java developers, the Sentinel jar file can be included in your project's pom.xml and everything that is done here can be done inside your code, triggered as part of the testing phase of your build. You will have to mock up or stand up a web server to test against, but this project is intended to be a fully self-contained testing tool.
+# Introduction
+This project will walk you through setting up an automated testing framework using Sentinel which leverages Cucumber and Selenium without requiring programming knowledge. This project will get you up in running quickly. Sentinel was designed to be used by Quality Assurance professionals wanting to learn how to program, but who also needed to get their job done. The approach was two-fold. First, make automation so easy that it can be written as quickly as manual testing, and run faster than manual testing. In doing so, we free up your time to be able to learn. Second, it provides an entry point for coding by exposing some, but not all of the code in a manageable way, by encouraging you to create custom testing steps. As use of this project has grown, the importance of this example project has grown with it, as has the need for easier installation.
 
-A final note before you begin using this tool. A tool is only as useful as you make it. You can buy the best power drill on the market, but if your team insists everything be built with nails, the drill will be useless. Implementing this tool is about process and getting people to adopt both the tool and the process around it. I have spent 20 years implementing automated testing at companies. The lessons I have learned inform the writing of this tutorial. Pay attention to not only how to use this tool, but what I have written about how to get your team (both business and technical) to adopt it. If you implement this tool correctly, you will be a hero. Furthermore, you will be able to take this tool with you in your career. Once you start using this shiny new tool, you won't want it left on the shelf. Technical implementation isn't the hard part. Team adoption is the hard part.
+It is worth noting for experienced Java developers, the Sentinel jar file can be included in your main project's pom.xml and everything that is done here can be done inside your code, triggered as part of the unit testing phase of your build. You will have to mock up or stand up a web server to test against, but this project is intended to be a fully self-contained testing tool.
+
+A final note before you begin using this tool. *Technical implementation isn't the hard part. Team adoption is the hard part.* A tool is only as useful as you make it. You can buy the best power drill on the market, but if your team insists everything be built with nails, the drill will be useless. Implementing this tool is about process and getting people to adopt both the tool and the process around it. I have spent 20 years implementing automated testing at companies. The lessons I have learned inform the writing of this tutorial. Pay attention to not only how to use this tool, but what I have written about how to get your team (both business and technical) to adopt it. If you implement this tool correctly, you will be a hero. Furthermore, you will be able to take this tool with you in your career. Once you start using this shiny new tool, you won't want it left on the shelf.
 
 # Section 1: Getting Started (~30 minutes)
 This section will get you up and running, executing the example tests in 30 minutes or less. Most of the time investment is installing Git, Java, and Maven. If you have all those tools installed, it takes less than 10 minutes to get a test running. In that case, just skip to Section 1.2
@@ -18,19 +29,19 @@ You will need to have the following tools installed to use the project:
  * Google Chrome (Recommended)
  * Eclipse (Recommnded)
  
-You can find installation scripts for these tools and installation instructions below. **NOTE:** These instructions and the accompanying installation scripts are provided AS IS. You may log tickets to improve the efficacy of the instructions or script, but there is no support for the scripts. They are being provided to help users who are not developers install development tools. If you are having difficulty installing any of these tools, please refer to the makers of these tools. Links to the makers of these tools are provided in [MAC-INSTALL.md](MAC-INSTALL.md) and [WIN-INSTALL.md](WIN-INSTALL.md).
+You can find installation instructions below. **NOTE:** These instructions are provided AS IS. You may log tickets to improve the efficacy of the instructions. They are being provided to help users who are not developers install development tools that are not a part of this project. If you are having difficulty installing any of these tools, please refer to the makers of these tools. Links to the makers of these tools are provided in [MAC-INSTALL.md](MAC-INSTALL.md) and [WIN-INSTALL.md](WIN-INSTALL.md).
 
 If you already have these tools installed, you can clone the sentinel.example project and move directly to Section 1.2. It is recommended that you use google chrome for initial setup. It is also suggested you use Eclipse as your IDE, as all the instructions are written for Eclipse. If you are familiar with IntelliJ or another editor, it is assumed you are knowledgeable enough to get the project working in your IDE without detailed instructions.
 
 If you want to check this project out for your own base project execute the following commands:
 
 ```
-git clone https://github.com/dougnoel/sentinel.example.git myproject
+git clone https://github.com/dougnoel/sentinel.example.git myprojectname
 
 ```
-To create a new page object, right-click on src/main/java and create a new package for your website in reverse order. E.G. for https://google.com use `com.google`
 
 ### 1.1.1 Mac Installation (5 - 20 minutes)
+**NOTE:** These instructions are provided AS IS. You may log tickets to improve the efficacy of the instructions, but there is no support for the instructions. They are being provided to help users who are not developers install development tools. If you are having difficulty installing any of these tools, please refer to the makers of these tools:
 You will need the following prerequisites installed:
 - [Xcode](https://developer.apple.com/xcode/)
 - [Homebrew](https://brew.sh/)
@@ -40,59 +51,59 @@ You will need the following prerequisites installed:
 - [Maven](http://maven.apache.org/)
 - [Eclipse](https://www.eclipse.org/)
 
-Once they are installed, you can continue with Section 1.2. Alternately, you can follow the instructions below and then move on to Section 1.3.
+The steps below will take you through manual installation of all the tools you need to use Sentinel on a Mac: X-Code Developer Tools, Homebrew, Git, Chrome, Java, Maven and Eclipse. It assumes that no development tools have been installed on your machine. If some of these have been installed, you can skip the steps you do not need.
 
-**Refer to [MAC-INSTALL.md](MAC-INSTALL.md) for installation instructions.**
+1. Ensure you are admin on your machine.
+2. Open up a terminal window.
+3. Type `cd ~` and hit ENTER.
+4. Type `xcode-select --install` and hit ENTER. When asked if you want to install the developer tools, say Yes and go through the installation.
+5. Paste the following line and hit Enter: `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"`
+6. Type `brew install git` and hit ENTER.
+7. Type `brew cask install google-chrome` and hit ENTER. (If you already have chrome installed skip this step)
+8. Type `brew tap homebrew/cask-versions` and hit ENTER.
+9. Type `brew cask install java11` and hit ENTER.
+10. Type `brew install maven` and hit ENTER.
+11. Type `brew cask install eclipse-java` and hit ENTER.
 
-You can check the installation by opening up a terminal window and typing the following:
-
-```
-cd ~/Projects/sentinel.example
-mvn test
-```
-
-If Google Chrome pops up and the tests run successfully, you are ready to move to Section 1.3.
+Go to Section 1.2
 
 ### 1.1.2 Windows Installation (10 - 20 minutes)
-You will need the following prerequisites installed:
+**NOTE:** These instructions are provided AS IS. You may log tickets to improve the efficacy of the instructions, but there is no support for the instructions. They are being provided to help users who are not developers install development tools. If you are having difficulty installing any of these tools, please refer to the makers of these tools:
 - [Git](https://git-scm.com/)
 - [Chrome](https://www.google.com/chrome/)
 - [Java](https://www.oracle.com/java/technologies/javase-downloads.html)
 - [Maven](http://maven.apache.org/)
 - [Eclipse](https://www.eclipse.org/)
 
-Once they are installed, you can continue with Section 1.2. Alternately, you can follow the instructions below and then move on to Section 1.3.
+The steps below will take you through manual installation of all the tools you need to use Sentinel on Windows 10: Git, Chrome, Java, Maven and Eclipse. It assumes that no development tools have been installed on your machine. If some of these have been installed, you can skip the steps you do not need.
 
-**Refer to [WIN-INSTALL.md](WIN-INSTALL.md) for installation instructions.**
+1. Ensure you are admin on your machine.
+2. Go to the [Git Download Page](https://git-scm.com/downloads) and download the Git installer for windows.
+3. Run the Git installer. Accept all the default options.
+4. Go to the [Google Chrome](https://www.google.com/chrome/) web page and click the Download button.
+5. Run ChromeSetup.exe installer. Accept all the default options.
+6. Download the JDK
+7. Install the JDK
+8. Set the JAVA\_HOME variable. [Click here for instructions.](https://www.codejava.net/java-core/how-to-set-java-home-environment-variable-on-windows-10)
+9. Download Maven
+10. Extract Maven to C:\Program Files\Maven
+11. Set the MAVEN\_HOME variable.
+12. Add %JAVA\_HOME%\bin;%MAVEN\_HOME%\bin to the PATH variable.
+13. Install [Eclipse SE](https://www.eclipse.org/).
+14. Open Eclipse and tell it to use a version later than 1.8 by default. [Instructions Here.](https://www.eclipse.org/eclipse/news/4.10/jdt.php#:~:text=Java%E2%84%A2%2011%20Support,-Eclipse%20support%20for&text=A%20Java%2011%20JRE%20is,using%20the%20project's%20context%20menu.) If you already imported the project, you will need to update the project settings by following [these instructions](https://www.baeldung.com/eclipse-change-java-version) as well.
+14. Open **File Explorer** and create a new folder called **Projects** in your home directory.
+15. Right-click the folder where you want to install the project and select **Open Git Bash here**. Click on the window that opens.
 
-You can check the installation by opening up a command window and typing the following:
-
-```
-cd %HOMEPATH%\Projects\sentinel.example
-mvn test
-```
-If Internet Explorer pops up and the tests run successfully, you are ready to move to Section 1.3.
+Go to Section 1.2
 
 ### 1.1.3 Linux Installation (5 - 20 minutes)
-There is no installation script for Linux as different flavors have different package managers. (You are encouraged to contribute a shell script for installing tools on you os.) After installing the appropriate tools, cd to the directory you want the project in and clone the repo.
+There are no installation instructions for Linux as different flavors have different package managers. If you have issues with installation, refer to the individual tool manufacturers.
 
-```
-git clone https://github.com/dougnoel/sentinel.example.git
-cd sentinel.example
-cp conf/sentinel.linux.example.yml conf/sentinel.yml
-mvn test
-```
-
-If the tests run successfully, you are ready to move to Section 1.3.
-
-If you have issues with installation, refer to the individual tool manufacturers.
-
-## 1.2 Running the Example Tests on the Command Line
+## 1.2 Running the Example Tests on the Command Line (5 minutes)
 If you already have all the tools installed (Git, Java, Maven), you can follow the following instructions on any operating system to get running quickly.
 
-1. On the command line change to the directory you wish to check the project out in and type `git clone https://github.com/dougnoel/sentinel.example.git`
-2. In the sentinel.example/conf directory there are a number of example configuration files. Copy the one for your operating system to a file titled `sentinel.yml`. Ensure the browser listed is one installed on your system.
-3. Change to the project `cd sentinel.example` and run `mvn test`. Provided that the configuration file exists, the project will run.
+1. On the command line change to the directory you wish to check the project out in and type `git clone https://github.com/dougnoel/sentinel.example.git myprojectname`
+2. Change to the project `cd myprojectname` and run `mvn test`.
 
 ## 1.3 Setting up the Project in Eclipse (10 minutes)
 Eclipse is the recommended IDE.
@@ -124,50 +135,36 @@ Repeat for the next plugin.
 
 If a browser pops up and the tests run successfully, you have successfully imported the project and are ready to build tests.
 
-### 1.3.3 Updating the Sentinel Version
-1. Open the pom.xml
-2. Edit the version of sentinel in the pom.xml file and change it to the new version number. (If the new version is a snapshot, it will look like `1.0.4-SNAPSHOT`, otherwise something like `1.0.3`.) Save the file.
-3. Right-Click on the project in the **Package Explorer**.
-4. Select **Maven -> Update Project...**
-5. Click **Ok** in the dialog that appears.
-6. Wait for the status bar and percentage complete in the lower right-hand corner to finish before continuing.
+# Section 2: Writing Your First Test (20 minutes)
+Now that you have sentinel.example up and running, let's create a new test.
 
-In the example below, change the version by replacing 1.0.4 in the `<version>` tags with the new version number before saving.
+# Section 3: Learning Good Automation Practices (1 hour)
+Now that you've seen how things works, you're going to want to jump in and start creating tests. This is where you have to decide if you want to be a superstar or not. If this were easy, everyone would be doing it, and SDET roles wouldn't command top dollar. If you read these instructions and spend the time necessary to learn the process involved, you will create tests at a rate that will astonish you and your co-workers. If you do not, this will be a mediocre tool that will get you some speed improvements, but will slowly bog down your process just like every other tool you've used until the implementation fails and is discarded. The information here companies pay a lot of money to have me come teach their QA and Development groups. You're getting it for the cost of reading this document to the end.
 
-Example:
+Writing a test starts before any code is written. When a user story is created, a ticket should have acceptance criteria that describe what the product owner expects the feature to do. Writing good acceptance criteria is about communicating what you expect to happen when development on a user story is complete. Good acceptance criteria act as your discussion points for clarifying stories, your test cases for automated testing, and your bug reports. After acceptance criteria are written by the product owner, they should be agreed upon by the product owners, development and QA *before* the ticket is accepted into a sprint. Once a ticket is in a sprint, you will tweak the acceptance criteria to match the Gherkin steps that are already defined so that you do not have to write new code.
 
-```
-		<dependency>
-			<groupId>com.dougnoel</groupId>
-			<artifactId>sentinel</artifactId>
-			<version>1.0.4</version>
-		</dependency>
-```
+It is important that the entire team be a part of this process. It is ok as the QA team member to write a few examples of acceptance criteria when convincing a team to adopt this tool. However, you must get the team on board with writing the criteria as a whole - as part of backlog grooming, *or the implementation of automation will ultimately fail.* **The entire team must be involved** in the creation of the steps so that the entire scope of testing is understood. The acceptance criteria are a QA Engineer's ticket description, the way that developers know they are done, and the way that product owners know they have successfully communicated what is in their head. Without them, the scope of the automation being written will change during sprints, and you will ultimately find yourself falling behind as work piles up. Just like it is unreasonable to expect developers to have any accuracy in story estimates if the stories are not defined before starting a sprint, you cannot expect quality assurance automation developers to have accuracy in story estimates if the acceptance criteria are not defined before starting a sprint.
 
-# Section 2: Writing Your First Test (~2 hours)
-Writing a test starts before any code is written. When a user story is created, a ticket should have Acceptance Criteria that describe what the product owner expects the feature to do. Writing good Acceptance Criteria is about communicating what you expect to happen when development on a user story is complete. Good Acceptance Criteria act as your discussion points for clarifying stories, your test cases for automated testing, and your bug reports. After Acceptance criteria are written by the product owner, they should be agreed upon by the product owners, development and QA *before* the ticket is accepted into a sprint. Once a ticket is in a sprint, you will tweak the Acceptance Criteria to match the Gherkin steps that are already defined so that you do not have to write new code.
-
-It is important that the entire team be a part of this process. It is ok as the QA team member to write a few examples of acceptance criteria when convincing a team to adopt this tool. However, you must get the team on board with writing the criteria as a whole - as part of backlog grooming, *or the implementation of automation will ultimately fail.* **The entire team must be involved** in the creation of the steps so that the entire scope of testing is understood. The Acceptance Criteria are a QA Engineer's ticket description. Without them, the scope of the automation being written will change in Sprints, and you will ultimately find yourself falling behind as work piles up. Just like it is unreasonable to expect developers to have any accuracy in story estimates if the stories are not defined before starting a sprint, you cannot expect quality assurance automation developers to have accuracy in story estimates if the acceptance criteria are not defined before starting a sprint.
-
-Acceptance criteria should be written as part of the ticket they are testing. Once you get used to using this tool, you will find that automating inside a sprint will be easy to do. Resist the urge to split stories or create testing stories that are different from development stories. If a story is too large to both develop and test in a single sprint, it is too large to finish in a sprint. This is either a problem of poorly defined stories, or poorly designed architecture. Both of these issues should be tackled as you encounter them. Pushing the problems off will prevent you from being successful and kill your automation effort. Additionally, acceptance criteria should be a part of the ticket you are testing so that the feature file can be tied to the same ticket number to which the code is tied. (Your developers *are* including ticket numbers when they check their code in, aren't they? If not, fix this now - it's an idea that's more than 20 years old.) Every testing scenario in a feature should have its own task ticket number, so that different people can code each task, but more importantly - every test can be run independently.
+Acceptance criteria should be written as part of the ticket they are testing. Once you get used to using this tool, you will find that automating inside a sprint will be easy to do. Resist the urge to split stories or create testing stories that are different from development stories. If a story is too large to both develop and test in a single sprint, it is too large to finish in a sprint. This is either a problem of poorly defined stories, or poorly designed architecture. Both of these issues should be tackled as you encounter them. Pushing the problems off will prevent you from being successful and kill your automation effort. You should just stop now because your team does not want automation - they want magic. Additionally, acceptance criteria should be a part of the ticket you are testing so that the feature file can be tied to the same ticket number to which the code is tied. (Your developers *are* including ticket numbers when they check their code in, aren't they? If not, fix this now - it's an idea that's more than 20 years old.) Every testing scenario in a feature should have its own task ticket number, so that different people can code each task, but more importantly - every test can be run independently.
 
 Finally, a note about functional versus data testing. Functional testing is testing the functionality of your code. Data testing is testing the data your clients/customers/users are pushing through your system. Data testing is often conflated with functional testing to bloat tests. An example of functional testing is making sure that special characters are allowed in a password. An example of data testing is making sure that special characters are allowed for normal users, admin users and super users. There is no functional difference between the way these three user types log in to a site. However a business owner may have once had trouble logging in, and they want tests for each type of user. Doing so does not improve testing. In fact, it does quite the opposite. It makes testing take longer, creates fragility in the framework (more tests to fail), and causes more noise when a feature fails. 
-If you tested all three scenarios, if one fails, they will all fail. It will appear to anyone who sees the results that three bugs were found, instead of just one. The counter argument to this is, "What if?" "What if one of the user roles does fail when the others pass?" In this case you log the bug and you discuss with your team why it happened, and how to prevent it in the future. Creating a test to cover this scenario is a band aid fix. The problem is architectural and should be addressed at that level. When you create a test, it should be atomic (meaning it doesn't rely on data from other scenarios) and unique.
+If you tested all three scenarios, if one fails, they will all fail. It will appear to anyone who sees the results that three bugs were found instead of just one. The counter argument to this is, "Whatifism?" "What if one of the user roles does fail when the others pass?" In this case you log the bug and you discuss with your team why it happened, and how to prevent it in the future. Creating a test to cover this scenario is a band aid fix. The problem is architectural and should be addressed at that level. When you create a test, it should be atomic (meaning it doesn't rely on data from other scenarios) and *unique*.
 
-## 2.1 Creating A Story and Task Tickets
+## 2.1 Creating A Story
+TODO: Update this
 The first test of any web site is logging into the site. So for our first test, we will be creating a login feature. We will be using the [New Tours Login](https://github.com/dougnoel/sentinel.example/issues/16) as an example. Clicking [this link](https://github.com/dougnoel/sentinel.example/issues/16) will take you to the ticket we created for our example feature. The first thing to do will be to create a similar ticket in your ticketing system, but instead of for the New Tours web site, make it for the web site you are testing. We are going to make two initial tests - one for a [successful login](https://github.com/dougnoel/sentinel.example/issues/17), and one for a [failed login](https://github.com/dougnoel/sentinel.example/issues/18). Create two tasks on your login story to track these. (If your system doesn't have tasks, just create two additional tickets as we have done and reference them in your parent story.)
 
 These tickets don't have to be perfect. Copy what you see and make your best guess to modify them for your own system. We can update the tickets as we refine the steps, so it isn't important to get them right the first time. In fact, most of the time you will be tweaking the tickets as you implement your automation. It's good to get used to that now. Later on we will be going into more detail about the specifics of the Gherkin language.
 
 ## 2.2 Creating a Cucumber Test
-Now that we have a ticket created, we can creature our first feature file. It's important to note that we use what Cucumber calls a feature file to match what Agile typically calls a story. Depending on where you work, a story may roll up to an epic, or it may roll up to a feature, then an epic, or something else. For our purposes, a feature file contains one story and a number of test scenarios. The purpose of this is to keep our tests as small an atomic as possible. If we let our feature files cover too much, they tend to get too complex, these slow our tetsing down, and feature creep starts over running our tests.
+Now that we have a ticket created, we can creature our first feature file. It's important to note that we use what Cucumber calls a feature file to match what Agile typically calls a story. Depending on where you work, a story may roll up to an epic, or it may roll up to a feature, then an epic. Regardless of your the way your company structure stories, features and epics, for our purposes, a feature file contains one story and a number of test scenarios. The purpose of this is to keep our tests as small an atomic as possible. If we let our feature files cover too much, they tend to get too complex. This slow our testing down, and feature creep starts over-running our tests.
 
-Feature file names should start with a story ticket number, then have the full text on the Summary field, followed by __.feature__ as the file extension. (NOTE: Any colons (:), forward slashes (/) or backward slashes (\) should be removed from the name of the file as they are not compatible across operating systems and can cause your tests to fail on other machines even if they do not fail on your machine.)
+Feature file names should start with a ticket number for our story, then have the full text in the Summary/Title field, followed by __.feature__ as the file extension. (NOTE: Any colons (:), forward slashes (/) or backward slashes (\) should be removed from the name of the file as they are not compatible across operating systems and can cause your tests to fail on other machines even if they do not fail on your machine.)
 
 1. In the __Project Explorer__ expand __src/test/java__.
 2. Right-click on the __features__ folder and select __New -> Other...__.
 3. In the dialog that appears, expand the __General__ folder and select __File__ then click the __Next__ button.
-3. Enter the Jira Ticket Number Story summary and .feature in the __File Name__ box. (ex. `US1234 User Story Name.feature`) (_Make sure there are no spaces at the beginning or end of the feature file._)
+3. Enter the Jira Ticket Number Story, a space, the summary and .feature in the __File Name__ box. (e.g. `US1234 User Story Name.feature`) (_Make sure there are no spaces at the beginning or end of the feature file._)
 4. Click the __Finish__ button.
 5. Paste the following into the editor, replace everything in {} with the requested information, and save the file.
 
@@ -299,7 +296,7 @@ A Scenario Outline allows us to pass variables into our test scenarios. They sho
 In addition to using the keyword **Scenario Outline:** a Scenario Outline must have an **Examples:** Section which should be indented at the same level as the other keywords (Given, When, Then, And, But). The variables are indented another level. They are contained in a table made with pipes |. 
 
 ## 2.3 Creating a Page Object
-A page object holds all of the information needed for the automation tool to locate the elements of a page on a web page. Each element is given a human readable name, and then it is linked to a way to find that element on a web page. Sentinel then utilizes the powerful Selenium Webdriver to find these elements. However, Sentinel then wraps those locators in code that solves a number of common problems people using Selenium typically encouner, such as needing to wait for a page to load, an element changing on the page, and optimizing this search so that it takes as little time as possible.
+A page object holds all of the information needed for the automation tool to locate the elements of a page on a web page. Each element is given a human readable name, and then it is linked to a way to find that element on a web page. Sentinel then utilizes the powerful Selenium Webdriver to find these elements. However, Sentinel then wraps those locators in code that solves a number of common problems people using Selenium typically encounter, such as needing to wait for a page to load, an element changing on the page, and optimizing this search so that it takes as little time as possible.
 
 1. In the __Package Explorer__ expand __src/main/java__.
 2. Right-click on the __com.com.dougnoel.sentinel.<projectname>.pages__ package and select __New -> Class__.
@@ -635,24 +632,267 @@ public class TestAPI extends API {
 
 # Section 7: Additional Information
 
-## 7.1 Web Drivers
+## 7.1 Drivers
+Sentinel supports all major web browsers for Windows, Mac and Linux machines for local development of tests and to allow developers to easily execute tests locally during development. For execution in pipelines, Sentinel also supports Chrome headless, Saucelabs, and Selenium Grid.
 
-The web drivers are stored in src/main/resources/drivers/[os] to make sure there is only one place to fix driver compatibility issues. Chrome auto updates, and so is the one that will go of date most often. While we could pull the driver from a path and let each implementation install the drivers, this can become problematic in CI/CD environments where we do not control the system. This also reduces the learning curve for using Sentinel.
-NOTE: All drivers are 64-bit versions. If you need to test on an old 32-bit browser, you will need to replace the drivers provided with a 32-bit driver. See the driver creators for support.
+### 7.1.1 Local Web Drivers
+All web drivers are managed by [WebDriverManager](https://github.com/bonigarcia/webdrivermanager). Both the operating system and browser are automatically detected and the appropriate web driver is downloaded. Downloaded drivers are cached on individual boxes. The following browsers are supported:
+* Chrome ([Chromedriver](http://chromedriver.chromium.org/))
+* Edge ([Edgedriver](https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/))
+* Firefox ([Geckodriver](https://github.com/mozilla/geckodriver/releases))
+* Internet Explorer ([IE Driver](http://selenium-release.storage.googleapis.com/index.html))
+* Opera ([OperaChromiumDriver](https://github.com/operasoftware/operachromiumdriver/releases))
+* Safari ([Safaridriver](https://webkit.org/blog/6900/webdriver-support-in-safari-10/))
 
-* [Chromedriver](http://chromedriver.chromium.org/) 80.0.3987.106 (2020-02-13) - Driver for automating Google Chrome.
-* [Geckodriver](https://github.com/mozilla/geckodriver/releases) v0.26.0 (Oct 11 2019) - Driver for automating Mozilla Firefox.
-* [IE Driver](http://selenium-release.storage.googleapis.com/index.html) 3.9 (2018-02-05) - Driver for automating IE.
-* [Safari](https://webkit.org/blog/6900/webdriver-support-in-safari-10/) - Safari driver is embedded in Safari.
+### 7.1.2 Headless Drivers
+Sentinel supports chrome in headless mode. To use it just add the `-Dheadless` command line option. All versions of chrome support headless execution, and the appropriate driver will be automatically downloaded.
 
-# 7.2 Versioning
+*Note that PhantomJS is not supported because the PhantomJS project was abandoned in 2018.*
+
+### 7.1.3 Saucelabs
+Sentinel is setup to use [Saucelabs](https://saucelabs.com/) for remote execution. This is the recommended way to execute test in your build pipeline, because you then do not need to setup an execution server.
+TODO: Add instructions.
+
+### 7.1.4 Selenium Grid
+Due to security concerns or PII/PHI concerns, sometimes companies cannot use Saucelabs and must maintain their own test execution hardware. In this case, Selenium Grid support is available.
+TODO: Add instructions.
+
+## 7.2 Versioning
 
 We use [Semantic Versioning](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/dougnoel/sentinel.example/tags). 
 
-# 7.3 Frequently Asked Questions
+## 7.3 Frequently Asked Questions
 
-## I imported the Sentinel or Sentinel.Example project and it's saying I have the wrong version of Java!
+### How do I update the Sentinel Version? (5 minutes)
+If you would like to use a newer Sentinel version, follow these instructions.
+
+1. Open the pom.xml
+2. Edit the version of sentinel in the pom.xml file and change it to the new version number. (If the new version is a snapshot, it will look like `1.0.4-SNAPSHOT`, otherwise something like `1.0.3`.) Save the file.
+3. Right-Click on the project in the **Package Explorer**.
+4. Select **Maven -> Update Project...**
+5. Click **Ok** in the dialog that appears.
+6. Wait for the status bar and percentage complete in the lower right-hand corner to finish before continuing.
+
+In the example below, change the version by replacing 1.0.4 in the `<version>` tags with the new version number before saving.
+
+Example:
+
+```
+		<dependency>
+			<groupId>com.dougnoel</groupId>
+			<artifactId>sentinel</artifactId>
+			<version>1.0.4</version>
+		</dependency>
+```
+
+NOTE: Snapshot versions require the word snapshot, eg. `1.0.7-SNAPSHOT`.
+
+### How do I add command line options in Eclipse when running tests?
+1. Go to **Run -> Run configurations...**
+2. Under JUnit, select **SentinelTests** and in the **Name:** box to the right change the name to reflect the changes you are making.
+3. Click on the **(x)= Arguments** tab.
+4. In the **VM arguments:** box add a space after the existing arguments (-ea may be the only argument) and then put `-Dkey=value` For example to pass a different browser than chrome use `-Dbrowser=edge`.
+5. Click the **Apply** button.
+6. Click the **Close** button.
+7. From the Toolbar, click the drop down arrow to the right of the Run toolbar icon <img src="images/eclipse_tool_bar_icon_run.png" height="14"> and select **SentinelTests - Dev**.
+
+### How do I leave the browser open at the end of my test?
+When running on the command line, you can use the argument `-DleaveBrowserOpen`. Ex:
+
+```
+mvn test -DleaveBrowserOpen
+```
+
+In Eclipse:
+1. Go to **Run -> Run configurations...**
+2. Under JUnit, select your test, right-click on it and select *Duplicate*
+3. Under JUnit, select the new test and in the **Name:** box to the right change the name to reflect that the browser is staying open.
+4. Click on the (x)= Arguments tab.
+5. In the **VM arguments:** box add a space after the existing arguments (-ea may be the only argument) and then put `-DleaveBrowserOpen`
+6. Click the **Apply** button.
+7. Click the **Close** button.
+8. From the Toolbar, click the drop down arrow to the right of the Run toolbar icon <img src="images/eclipse_tool_bar_icon_run.png" height="14"> and select your new test runner.
+
+### How do I run only certain tests?
+If you want to run specific tagged tests, you can do so by passing in cucumber arguments on the command line. E.G. `mvn -Dcucumber.options="--tags @106" test`
+
+You can also do so by customizing a Run Configuration.
+1. Go to Run -> Run Configurations...
+2. Make a copy of Sentinel Tests
+3. Click on the arguments tab.
+4. Change the VM arguments from `-ea` to something like `-ea -Dcucumber.options="--tags @106"` replacing the tag(s) you want to use with your tag.
+
+For more information on command line options you can use for cucumber, you may refer to [this article](https://www.toolsqa.com/selenium-cucumber-framework/run-cucumber-test-from-command-line-terminal/).
+
+### How do I wait?
+YOU don't.
+
+Sentinel is  built on Selenium, which has a concept of iplicit waits and explicit waits, and it is recommended to not use both methods. Sentinel uses implicit waits, and a lot of time and effort has been put into making that as fast and ropbust as possible. Every place you could possibly put a wait, there is already a Fluentwait implemented that re-checks every 10 milliseconds for the default 10 seconds, using multiple identifiers (if you provided them). If your web page is still taking too much time to respond, you should do the three following things:
+
+1. Increase the timeout to more than 10 seconds by passing the `-Dtimeout` option on the command line. If this solves your problem, talk to your developers aout reducing the tie, as responsiveness of more than 3 seconds will hurt your Google SEO results.
+2. Look at it with the developer of the page (or another developer if you are the developer of the page) and talk through the issue. Ensure that you are identifying the correct element, and that there are no invisible overlays blocking web page interaction. (This can happen where an invisible overlay on a page allows click-through by humans but automation gets blocked.)
+3. Log a bug with Sentinel using the bug writing guidelines. Give as much information as possible. *Please note that tickets do not follow the bug writing guidelines will be closed without investigation.*
+4. Do NOT put sleeps in the project. You will greatly reduce the efficacy of your tests.
+
+### How do I change the default timeout?
+All timeouts default to 10 seconds. This includes finding elements, waiting for pages to load, and checking element states such as isEnabled. These checks are made using all locators provided for an element, every 10 milliseconds until the timeout duration is set. The typical UX guideline for a page load is 2 seconds, and having longer page load times as of 2021 will hurt your Google rankings. So, 10 seconds is more than adequate for any customer-facing application. However we recognize that sometimes development environments are less reliable. If 10 seconds is not enough, you can change the default timeout either on the command line or in the sentinel.yml configuration file. For example if you want to double it to 20 seconds you would use `-Dtimeout=20`.
+
+Perhaps your dev environment is giving you a problem and you want to set the wait time astronomically high, but leave it the same for your other environments, so you want to give it ten minutes because sometimes your job runs at night and you don't want it to hang up during a deploy. In that case you could set a value in the configuration file like so:
+
+```
+configurations:
+  dev:
+  	timeout=3600
+```
+
+It will wait ten minutes before failing on any wait in dev, but stick to the 10 second timeout in any other environment.
+
+Timeout values must be whole numbers.
+
+### How do I use an environment other than localhost?
+When running on the command line, you can use the argument `-Denv=`. For example for a stage environment:
+
+```
+mvn test -Denv=stage
+```
+
+1. In Eclipse, go to **Run -> Run configurations...**
+2. Under JUnit, select **SentinelTests.java**, right-click on it and select **Duplicate**
+3. Under JUnit, select the new test and in the **Name:** box to the right change the name to reflect the environment you want to use (e.g. **SentinelTests - Stage**.
+4. Click on the **(x)= Arguments** tab.
+5. In the **VM arguments:** box add a space after the existing arguments (-ea may be the only argument) and then put `-Denv=stage` or whicever environment you want to use.
+6. Click the **Apply** button.
+7. Click the **Close** button.
+8. From the Toolbar, click the drop down arrow to the right of the Run toolbar icon <img src="images/eclipse_tool_bar_icon_run.png" height="14"> and select your new test runner (**SentinelTests - Stage**, etc).
+
+### I imported the Sentinel or Sentinel.Example project and it's saying I have the wrong version of Java!
 Check out this hand-dandy link! [https://www.baeldung.com/eclipse-change-java-version](https://www.baeldung.com/eclipse-change-java-version)
+
+### How do I set the URL for my page object?
+The URL for your page object is set in the page object yaml file. The file name needs to match the name you use for the page in your Cucumber steps without spaces. So if your page name is `Bits N Bobs Main Page` then your file needs to be named `BitsNBobsMainPage.yml`. Note that the word Page must be at the end of the file and it must have an upper case P. Then you just put in a `urls:` section and a default url. It will be used regardless of what environment is passed.
+
+```
+urls:
+	default: http://myurl.com
+```
+
+### How do I set different URLs for specific environments?
+If you want to define urls for different test environments (dev, qa, stage, uat, etc) then you can define them in your file. If a url is not found, the default url will be used. If no default is used, the tests will fail with an error message telling you that the url could not be found.
+
+```
+urls:
+	default: http://myurl.com
+	dev: http://dev.myurl.com
+```
+
+If you passed the **dev** environment using the above configuration, you would get `http://dev.myurl.com`. If you passed the **qa** environment, it would load the default `http://myurl.com`.
+
+### How do I use a URL pattern for similar environments?
+If you have multiple environments with the same naming convention, you do not need to spell out each one. Instead you can put the `{env}` specifier in your url and tag it with `default:` and it will be auto replaced by the environment name you have passed. If you want to override this default pattern, you just define the environment names you want to overload.
+
+```
+urls:
+	default: http://{env}.myurl.com
+	prod: http://myurl.com
+```
+
+If you passed the **prod** environment using the above configuration, you would get `http://myurl.com`. If you passed the **stage** environment, it would load the default and replace the name resulting in `http://stage.myurl.com`.
+
+### None of my elements can be found! What's going on?
+You need to ensure that you are telling the framework what page you are on. It keeps track of that by the `I am on the Page Name Page` and `I am redirected to the Page Name Page` steps. If you do not expect to be on a particular page, then the framework assumes you are still on the last page you started on, or no page if you have not told it you expect to be on your page. Defining page objects is an exercise that is helpful for us as people to be able to grasp a whole web site, but it means nothing to a computer. DEfine your page objects in such a way that people can understand the distinctions.
+
+### How do I set default username and password account info across environments?
+If you have the same test account across multiple environments, you can easily set them all at the same time. For example, your dev, qa and stage environments might share the same identification provider. Lets say there is a standard user and an admin user. You could set their values for all environments like so:
+
+```
+urls:
+	default: http://myurl.com
+accounts:
+	default:
+		StandardUser:
+			username: user1
+			password: badp@ssw0rd
+		AdminUser:
+			username: user2
+			password: @n0therb@dp@ssw0rd
+```
+
+*Remember to update your passwords in the page object yaml when you update them in your test environments!*
+
+### How do I set username and password account info for a specific environment?
+If you have a specific test accounts, say a more secure admin one for your stage environment only, you could define it like so:
+
+```
+urls:
+	default: http://myurl.com
+accounts:
+	default:
+		StandardUser:
+			username: user1
+			password: badp@ssw0rd
+		AdminUser:
+			username: user2
+			password: @n0therb@dp@ssw0rd
+	stage:
+		AdminUser:
+			username: stageadmin
+			password: 3h@njk#wnk{wdf76
+```
+
+In stage it would use your more secure admin account, but for normal user tests it would use your original account, and for all other environments it would use the default accounts.
+
+### My tests were all passing and now some (or all) of my accounts can no longer log in! What's going on?
+Check to make sure someone didn't update the tests account passwords. If they did, update your page object yaml files accordingly.
+
+### How do I use a different/newer/custom version of Chrome?
+If you want to use a different Chrome executable, you need to change the browser type to `customChrome` and set the `chromeBrowserBinary` value to the path of the executable you want to use.
+
+```
+mvn test -D browser=customChrome -DchromeBrowserBinary=path/to/executable/executableName
+```
+
+Alternately, you can just add the values to your sentinel.yml config file:
+
+```
+configurations:
+  default:
+    browser: customChrome
+    chromeBrowserBinary: "path/to/executable/executableName"
+```
+
+### How do I run chrome in headless mode?
+If you want to run chrome as a headless browser, you can change that either on the command line or in the sentinel.yml configuration file. On the command line you would use `-Dheadless` to use chrome in headless mode. This is the equivalent of passing `-Dheadless=true`. Alternately if headless is turned on in the configuration file and you need to override it, you can pass `-Dheadless=false` on the command line.
+
+Perhaps your in your CI/CD pipeline, your dev environment is the only one not setup for browser compatibility, and you want to run the tests there as headless. In that case you could set a value in the configuration file like so:
+
+```
+configurations:
+  dev:
+  	headless: true
+```
+
+It's also possible that you need every environment except localhost to run headless. In this case you could setup the configuration file like so:
+
+```
+configurations:
+  default:
+  	headless: true
+  localhost:
+  	headless: false
+```
+*NOTE: Passing in a value on the command line will always override whatever is in the configuration file.*
+
+### How do I navigate to step definition file from feature file scenario step? ###
+Press CTRL + Click (Command + Click on a Mac) on the feature file scenario, This should navigate to associated step defintion, but if this does not work, the follow below steps: 
+1. In Eclipse go to Help
+2. Select Eclipse Marketplace
+3. Search for cucumber
+4. result should return Cucumber eclipse plugin and Natural plugin
+5. If none of them are installed then install only Cucumber eclipse plugin
+6. If both are installed then uninstall Natural plugin and keep Cucumber plugin installed
+7. After install the plugin, Right click on the Project --> Configure  --> Convert to Cucumber project
+8. Open any feature file: Right click on feature file and select cucumber editor
+9. Now CTRL + Click (Command + Click) should navigate to the step definition file. Enjoy coding :)
 
 # 7.4 Authors
 
