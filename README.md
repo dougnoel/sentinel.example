@@ -138,6 +138,65 @@ If a browser pops up and the tests run successfully, you have successfully impor
 # Section 2: Writing Your First Test (20 minutes)
 Now that you have sentinel.example up and running, let's create a new test.
 
+## 2.1 Identifying our Test
+So we have tests for the Swag Labs Website. Let's say that we have a new requirement, adding an item to our cart. We have already automated logging in, and verifying the sort on the main page. We have a ticket in our system [Swag Labs Add To Cart #63
+](https://github.com/dougnoel/sentinel.example/issues/63) that contains our requirements. Here's out requirement:
+
+`As a customer of Swag Labs, I want to be able to select an item and place it in my cart, so that I have an item in my cart.`
+
+So, first I need to write some acceptance criteria that will become my automated tests. We need to login, add an item to our cart, and verify the item is in the cart. I can do that with the following acceptance criteria:
+
+```
+Given that I am logged in
+When I add an item to my cart
+Then the item will be in my cart
+```
+
+This is enough for us to get started.
+
+## 2.2 Making Cucumber Steps
+To write Cucumber steps we need to create a new test feature file, and create the steps needed.
+
+### 2.2.1 Creating our feature file
+1. In the **Package Explorer**, expand the project by clicking the right arrow next to the project name.
+2. Expand src/test/java
+3. Right-click **features** and select **New->File** (Tests must always be stored in the **features** directory or a sub-directory beneath it.)
+4. In the **Create New File** dialog box, enter a filename of `63 Swag Labs Add To Cart.feature` (You will see that we have pre-pended the file name with the ticket number and then ended it with `.feature`. Both of these are important. Also, a filename cannot contain `:, /, or \`.)
+5. In our new file we want to tell people who created this so they can ask us questions later. On the first line put: `#Author: <your name>`
+6. On the next line we want a tag to allow us to run just this file, so we will add `@63` which is our ticket number to line 2.
+7. Our third line is going to be the name of the feature. This will show up in our test results and should match our filename so that it is easy to find this test if our test fails. So our third line will read: `Feature: 63 Swag Labs Add To Cart` (Notice how the ticket number once again shows up at the front of the feature name. This is important to find it later.)
+8. Our fourth line is going to be the description of the ticket. We will paste it from our ticket and add 2 spaces in front of it: `  As a customer of Swag Labs, I want to be able to select an item and place it in my cart, so that I have an item in my cart.`
+9. The fifth line is going to be blank.
+10. On line 6 we are going to add a tag for the first scenario (in this case our only one) with two spaces in front of it: `  @63A` (Note that we just use the ticket number and append A, B, C, etc for each scenario if we have multiple.)
+11. Next we are going to add our scenario name, with two spaces in front of it: `  Scenario: Add To Cart`
+12. We will now add our steps from section 2.1, making sure that each line has 4 spaces in front of it.
+
+```
+    Given that I am logged in
+    When I add an item to my cart
+    Then the item will be in my cart
+```
+Then we will save the file.
+
+### 2.2.2 Testing our Feature File
+Now that we have created a file, we will test to see if it works.
+
+1. Go to **Run -> Run configurations...**
+2. Under JUnit, select **TestRunner** and right-click and select **Duplicate**
+4. Select the duplicated test and in the **Name:** box to the right change the name to reflect the changes you are making (e.g. **TestRunner 63**).
+5. Click on the **(x)= Arguments** tab.
+6. In the **VM arguments:** box add a space after the existing arguments (-ea may be the only argument) and then put `-Dkey=value` For example to pass a different browser than chrome use `-ea -Dcucumber.options="--tags @63"`.
+7. Click the **Apply** button.
+8. Click the **Close** button.
+9. From the Toolbar, click the drop down arrow to the right of the Run toolbar icon <img src="images/eclipse_tool_bar_icon_run.png" height="14"> and select your test name (e.g. **TestRunner 63**).
+
+
+blah
+
+- Making a page object
+- Making Cucumber Steps
+- Executing the test
+
 # Section 3: Learning Good Automation Practices (1 hour)
 Now that you've seen how things works, you're going to want to jump in and start creating tests. This is where you have to decide if you want to be a superstar or not. If this were easy, everyone would be doing it, and SDET roles wouldn't command top dollar. If you read these instructions and spend the time necessary to learn the process involved, you will create tests at a rate that will astonish you and your co-workers. If you do not, this will be a mediocre tool that will get you some speed improvements, but will slowly bog down your process just like every other tool you've used until the implementation fails and is discarded. The information here companies pay a lot of money to have me come teach their QA and Development groups. You're getting it for the cost of reading this document to the end.
 
@@ -689,12 +748,13 @@ NOTE: Snapshot versions require the word snapshot, eg. `1.0.7-SNAPSHOT`.
 
 ### How do I add command line options in Eclipse when running tests?
 1. Go to **Run -> Run configurations...**
-2. Under JUnit, select **SentinelTests** and in the **Name:** box to the right change the name to reflect the changes you are making.
-3. Click on the **(x)= Arguments** tab.
-4. In the **VM arguments:** box add a space after the existing arguments (-ea may be the only argument) and then put `-Dkey=value` For example to pass a different browser than chrome use `-Dbrowser=edge`.
-5. Click the **Apply** button.
-6. Click the **Close** button.
-7. From the Toolbar, click the drop down arrow to the right of the Run toolbar icon <img src="images/eclipse_tool_bar_icon_run.png" height="14"> and select **SentinelTests - Dev**.
+2. Under JUnit, select **TestRunner** and right-click and select **Duplicate**
+4. Select the duplicated test and in the **Name:** box to the right change the name to reflect the changes you are making (e.g. **TestRunner Edge**).
+5. Click on the **(x)= Arguments** tab.
+6. In the **VM arguments:** box add a space after the existing arguments (-ea may be the only argument) and then put `-Dkey=value` For example to pass a different browser than chrome use `-Dbrowser=edge`.
+7. Click the **Apply** button.
+8. Click the **Close** button.
+9. From the Toolbar, click the drop down arrow to the right of the Run toolbar icon <img src="images/eclipse_tool_bar_icon_run.png" height="14"> and select your test name (e.g. **TestRunner Edge**).
 
 ### How do I leave the browser open at the end of my test?
 When running on the command line, you can use the argument `-DleaveBrowserOpen`. Ex:
@@ -714,13 +774,17 @@ In Eclipse:
 8. From the Toolbar, click the drop down arrow to the right of the Run toolbar icon <img src="images/eclipse_tool_bar_icon_run.png" height="14"> and select your new test runner.
 
 ### How do I run only certain tests?
-If you want to run specific tagged tests, you can do so by passing in cucumber arguments on the command line. E.G. `mvn -Dcucumber.options="--tags @106" test`
+If you want to run specific tagged tests, you can do so by passing in cucumber arguments on the command line. E.G. `mvn -Dcucumber.options="--tags @63" test`
 
 You can also do so by customizing a Run Configuration.
-1. Go to Run -> Run Configurations...
-2. Make a copy of Sentinel Tests
-3. Click on the arguments tab.
-4. Change the VM arguments from `-ea` to something like `-ea -Dcucumber.options="--tags @106"` replacing the tag(s) you want to use with your tag.
+1. Go to **Run -> Run configurations...**
+2. Under JUnit, select **TestRunner** and right-click and select **Duplicate**
+4. Select the duplicated test and in the **Name:** box to the right change the name to reflect the changes you are making (e.g. **TestRunner 63**).
+5. Click on the **(x)= Arguments** tab.
+6. In the **VM arguments:** box add a space after the existing arguments (-ea may be the only argument) and then put `-Dkey=value` For example to pass a different browser than chrome use `-ea -Dcucumber.options="--tags @63"`.
+7. Click the **Apply** button.
+8. Click the **Close** button.
+9. From the Toolbar, click the drop down arrow to the right of the Run toolbar icon <img src="images/eclipse_tool_bar_icon_run.png" height="14"> and select your test name (e.g. **TestRunner 63**).
 
 For more information on command line options you can use for cucumber, you may refer to [this article](https://www.toolsqa.com/selenium-cucumber-framework/run-cucumber-test-from-command-line-terminal/).
 
