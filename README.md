@@ -135,10 +135,44 @@ Repeat for the next plugin.
 
 If a browser pops up and the tests run successfully, you have successfully imported the project and are ready to build tests.
 
-## 1.4 Setting up the Project in Visual Studio Code(10 minutes)
-Visual Studio code is a supported alternative to Eclipse. It has Windoes, Mac, and Linux versions: https://code.visualstudio.com/download
+## 1.4 Setting up the Project in Visual Studio Code (10 minutes)
+Visual Studio code is a supported alternative to Eclipse.
 
-### 1.4.1 Installing Plugins
+### 1.4.1 Installing VSCode
+There are Windows, Mac, and Linux versions: https://code.visualstudio.com/download
+1. Select the correct version for your environment and download the installer.
+2. Run the VSCode installer. Accept all the default options.
+
+### 1.4.2 Installing Plugins
+Visual Studio Code includes a marketplace for extensions which can be accessed with ctrl+shift+x (or the square blocks button on the side bar.) The extensions listed are recommended but others can be substituted.
+
+In the extension explorer (ctrl+shift+x):
+1. Search for Java Extension Pack, select the one by Microsoft and click the install button.
+2. Search for Cucumber (Gherkin) Full Support select the one by Alex Krechik and click the install button.
+
+### 1.4.3 Opening and Running the Project
+In the top left menu:
+1. Select File -> Open folder.
+2. Navigate to the directory that the project is downloaded to and select the encompassing folder.
+
+In the file explorer (ctrl+shift+e):
+1. Select the Maven tab. 
+2. In the Maven tab, right click the project and select install.
+3. In the Maven tab, right click test to execute the test cases.
+
+Some tests may require some additional configurations to run.
+
+###1.4.4 Configuring Tests Using the Maven Commandline Options
+To setup different testing presets, open the Command Palette (ctrl+shift+p):
+1. Search for and select Tasks: Configure Task.
+2. Select the option to create tasks.json file from template.
+3. Select the option to use the maven template.
+
+The new tasks.json file is created in the .vscode directory. You can add additional test configurations with commands in this file. 
+To select which one to run, open the Command Palette (ctrl+shift+p):
+
+1. Search for and select Tasks: Run Test Task.
+2. Select the label for the configuration that you would like to execute.
 
 # Section 2: Writing Your First Test (20 minutes)
 Now that you have sentinel.example up and running, let's create a new test.
@@ -154,8 +188,6 @@ Acceptance criteria should be written as part of the ticket they are testing. On
 
 Finally, a note about functional versus data testing. Functional testing is testing the functionality of your code. Data testing is testing the data your clients/customers/users are pushing through your system. Data testing is often conflated with functional testing to bloat tests. An example of functional testing is making sure that special characters are allowed in a password. An example of data testing is making sure that special characters are allowed for normal users, admin users and super users. There is no functional difference between the way these three user types log in to a site. However a business owner may have once had trouble logging in, and they want tests for each type of user. Doing so does not improve testing. In fact, it does quite the opposite. It makes testing take longer, creates fragility in the framework (more tests to fail), and causes more noise when a feature fails. 
 If you tested all three scenarios, if one fails, they will all fail. It will appear to anyone who sees the results that three bugs were found instead of just one. The counter argument to this is, "Whatifism?" "What if one of the user roles does fail when the others pass?" In this case you log the bug and you discuss with your team why it happened, and how to prevent it in the future. Creating a test to cover this scenario is a band aid fix. The problem is architectural and should be addressed at that level. When you create a test, it should be atomic (meaning it doesn't rely on data from other scenarios) and *unique*.
-
-
 
 ## 2.1 Creating A Story
 TODO: Update this
