@@ -1,4 +1,4 @@
-# Sentinel.Example 1.0.7-SNAPSHOT
+﻿# Sentinel.Example 1.0.7-SNAPSHOT
 Works with ![Sentinel](https://img.shields.io/github/v/release/dougnoel/sentinel?color=gree&include_prereleases&style=plastic)
 
 # Why should I use this?
@@ -135,6 +135,11 @@ Repeat for the next plugin.
 
 If a browser pops up and the tests run successfully, you have successfully imported the project and are ready to build tests.
 
+## 1.4 Setting up the Project in Visual Studio Code(10 minutes)
+Visual Studio code is a supported alternative to Eclipse. It has Windoes, Mac, and Linux versions: https://code.visualstudio.com/download
+
+### 1.4.1 Installing Plugins
+
 # Section 2: Writing Your First Test (20 minutes)
 Now that you have sentinel.example up and running, let's create a new test.
 
@@ -149,6 +154,8 @@ Acceptance criteria should be written as part of the ticket they are testing. On
 
 Finally, a note about functional versus data testing. Functional testing is testing the functionality of your code. Data testing is testing the data your clients/customers/users are pushing through your system. Data testing is often conflated with functional testing to bloat tests. An example of functional testing is making sure that special characters are allowed in a password. An example of data testing is making sure that special characters are allowed for normal users, admin users and super users. There is no functional difference between the way these three user types log in to a site. However a business owner may have once had trouble logging in, and they want tests for each type of user. Doing so does not improve testing. In fact, it does quite the opposite. It makes testing take longer, creates fragility in the framework (more tests to fail), and causes more noise when a feature fails. 
 If you tested all three scenarios, if one fails, they will all fail. It will appear to anyone who sees the results that three bugs were found instead of just one. The counter argument to this is, "Whatifism?" "What if one of the user roles does fail when the others pass?" In this case you log the bug and you discuss with your team why it happened, and how to prevent it in the future. Creating a test to cover this scenario is a band aid fix. The problem is architectural and should be addressed at that level. When you create a test, it should be atomic (meaning it doesn't rely on data from other scenarios) and *unique*.
+
+
 
 ## 2.1 Creating A Story
 TODO: Update this
