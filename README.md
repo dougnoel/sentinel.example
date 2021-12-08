@@ -96,6 +96,10 @@ The steps below will take you through manual installation of all the tools you n
 
 Go to Section 1.2
 
+#### 1.1.2.1 WinAppDriver Setup (5 - 30 minutes)
+If you want to do Windows application automation (not web browser) then you need to install WinAppDriver and turn on developer mode for your Windows box(es) that will be testing windows applications. This is optional, and not required to do browser testing on windows.
+
+
 ### 1.1.3 Linux Installation (5 - 20 minutes)
 There are no installation instructions for Linux as different flavors have different package managers. If you have issues with installation, refer to the individual tool manufacturers.
 
