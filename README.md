@@ -97,8 +97,20 @@ The steps below will take you through manual installation of all the tools you n
 Go to Section 1.2
 
 #### 1.1.2.1 WinAppDriver Setup (5 - 30 minutes)
+**NOTE:** These instructions are provided AS IS. You may log tickets to improve the efficacy of the instructions, but there is no support for the instructions. They are being provided to help users who are not developers install development tools and enable developer mode. If you are having difficulty installing any of these tools, or changing these settings, please refer to the following:
+- [WinAppDriver](https://github.com/microsoft/WinAppDriver)
+- [Enabling Windows Development Mode](https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development)
+
 If you want to do Windows application automation (not web browser) then you need to install WinAppDriver and turn on developer mode for your Windows box(es) that will be testing windows applications. This is optional, and not required to do browser testing on windows.
 
+1. Go to the [WinAppDriver Releases Page](https://github.com/microsoft/WinAppDriver/releases) and download the latest stable WinAppDriver installer.
+2. Install WinAppDriver.
+3. Add `%PROGRAMFILES(x86)%\Windows Application Driver` to the path variable for **64-bit machines**, `%PROGRAMFILES%\Windows Application Driver` for **32-bit machines** to the PATH variable.
+4. Verify the above by typing `WinAppDriver` in a new cmd or powershell window and ensuring WinAppDriver starts without errors. It may be quit afterwards.
+5. Navigate to Windows Settings.
+6. Using Windows Settings search and navigate to `Developer Settings`.
+7. Enable developer mode by clicking the radial button marked `Developer Mode`.
+8. Restart your windows machine once the operation in the previous step completes.
 
 ### 1.1.3 Linux Installation (5 - 20 minutes)
 There are no installation instructions for Linux as different flavors have different package managers. If you have issues with installation, refer to the individual tool manufacturers.
