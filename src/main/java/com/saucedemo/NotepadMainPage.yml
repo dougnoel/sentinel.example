@@ -1,0 +1,7 @@
+paths:
+   default: "C:\\Windows\\System32\\notepad.exe"
+elements:
+   input_fields:
+      note_editor:
+         name: "Text Editor"
+         class: "Edit"

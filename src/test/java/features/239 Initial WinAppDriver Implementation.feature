@@ -1,3 +1,4 @@
+#language: en
 #Author: ty.pixelplane@gmail.com
 
 @239
@@ -7,15 +8,15 @@ Feature: 239 Implement WinAppDriver to automate windows
   
   @239A, @TextEntry  
   Scenario: 239A Use Notepad
-  	Given that I open Notepad.exe
-  	When I enter "text" into the main window
-  	Then I verify that the main window contains "text"
+  	Given that I open "C:\\Windows\\System32\\notepad.exe"
+  	When I enter "test" into the "Text Editor" field
+  	Then I expect that "Text Editor" contains "test"
 
   @239B, @ButtonInteraction
   Scenario: 239B Use Calculator
-  	Given that I open Calculator.exe
-  	When I press the one button
-  	  And I press the plus button
-  	  And I press the two button
-  	  And I press the equals button
-  	Then I expect the result pane to contain the output "3"
+  	Given that I open "C:\\Windows\\System32\\win32calc.exe"
+  	When I press the "1" button
+  	  And I press the "Add" button
+  	  And I press the "2" button
+  	  And I press the "Equals" button
+  	Then I expect that "Result" contains "3"
