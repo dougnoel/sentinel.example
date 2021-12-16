@@ -106,11 +106,12 @@ If you want to do Windows application automation (not web browser) then you need
 1. Go to the [WinAppDriver Releases Page](https://github.com/microsoft/WinAppDriver/releases) and download the latest stable WinAppDriver installer.
 2. Install WinAppDriver.
 3. Add `%PROGRAMFILES(x86)%\Windows Application Driver` to the path variable for **64-bit machines**, `%PROGRAMFILES%\Windows Application Driver` for **32-bit machines** to the PATH variable.
-4. Verify the above by typing `WinAppDriver` in a new cmd or powershell window and ensuring WinAppDriver starts without errors. It may be quit afterwards.
-5. Navigate to Windows Settings.
-6. Using Windows Settings search and navigate to `Developer Settings`.
-7. Enable developer mode by clicking the radial button marked `Developer Mode`.
-8. Restart your windows machine once the operation in the previous step completes.
+4. Navigate to Windows Settings.
+5. Using Windows Settings search and navigate to `Developer Settings`.
+6. Enable developer mode by clicking the radio button marked `Developer Mode`. Wait as it says **Searching for Developer Mode**.
+7. Verify the above by typing `WinAppDriver` in a new cmd or powershell window and ensuring WinAppDriver starts without errors. It may be quit afterwards.
+
+NOTE: If turning on developer mode doesn't work, reboot your system and then it should work.
 
 ### 1.1.3 Linux Installation (5 - 20 minutes)
 There are no installation instructions for Linux as different flavors have different package managers. If you have issues with installation, refer to the individual tool manufacturers.
