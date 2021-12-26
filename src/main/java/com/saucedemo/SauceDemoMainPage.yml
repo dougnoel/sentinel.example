@@ -7,5 +7,5 @@ elements:
     elementType: Div
     xpath: "//div[@class='inventory_list']/div[1]/div[@class='inventory_item_label']/a/div"
   sauce_labs_backpack_link:
-     elementType: Div
-     text: "Sauce Labs Backpack"
+    elementType: Div
+    text: "Sauce Labs Backpack"
