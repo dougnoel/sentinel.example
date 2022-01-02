@@ -3,9 +3,10 @@ elements:
   product_sort_dropdown:
     elementType: Dropdown
     class: product_sort_container
+    xpath: "//span[@class='select_container']/select"
   first_item_name:
     elementType: Div
-    xpath: "(//div[@class='inventory_item_name'])[1]"
+    xpath: "//div[@class='inventory_list']/div[1]/div[@class='inventory_item_description']"
   sauce_labs_backpack_link:
      elementType: Div
      text: "Sauce Labs Backpack"
