@@ -2,6 +2,7 @@ include: SauceDemoMenuPage
 elements:
   product_sort_dropdown:
     elementType: Dropdown
+    class: product_sort_container
     xpath: "//span[@class='select_container']/select"
   first_item_name:
     elementType: Div
