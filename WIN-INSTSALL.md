@@ -1,5 +1,5 @@
 #WIN-INSTALL.md 1.0.3
-**NOTE:** These instructions are provided AS IS. You may log tickets to improve the efficacy of the instructions or script, but there is no support for the instructions. They are being provided to help users who are not developers install development tools. If you are having difficulty installing any of these tools, please refer to the makers of these tools:
+**NOTE:** These instructions are provided AS IS. You may log tickets to improve the efficacy of the instructions, but there is no support for the instructions. They are being provided to help users who are not developers install development tools. If you are having difficulty installing any of these tools, please refer to the makers of these tools:
 - [Git](https://git-scm.com/)
 - [Chrome](https://www.google.com/chrome/)
 - [Java](https://www.oracle.com/java/technologies/javase-downloads.html)
@@ -20,4 +20,12 @@ The steps below will take you through manual installation of all the tools you n
 10. Extract Maven to C:\Program Files\Maven
 11. Set the MAVEN\_HOME variable.
 12. Add %JAVA\_HOME%\bin;%MAVEN\_HOME%\bin to the PATH variable.
-13. Install Eclipse.
+13. Install [Eclipse SE](https://www.eclipse.org/).
+14. Open **File Explorer** and create a new folder called **Projects** in your home directory.
+15. Right-click the **Projects** folder and select **Open Git Bash here**. Click on the window that opens.
+16. Type `git clone https://github.com/dougnoel/sentinel.example.git` and hit ENTER.
+17. Type `cd sentinel.example` and hit ENTER.
+18. Type `cp conf/sentinel.windows.example.yml conf/sentinel.yml` and hit ENTER.
+19. Type `mvn test` and hit ENTER.
+
+If Internet Explorer pops up and the tests run successfully, you are ready to move to Section 1.3.

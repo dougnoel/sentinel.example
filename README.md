@@ -23,7 +23,18 @@ You can find installation scripts for these tools and installation instructions 
 If you already have these tools installed, you can clone the sentinel.example project and move directly to Section 1.2. It is recommended that you use google chrome for initial setup. It is also suggested you use Eclipse as your IDE, as all the instructions are written for Eclipse. If you are familiar with IntelliJ or another editor, it is assumed you are knowledgeable enough to get the project working in your IDE without detailed instructions.
 
 ### 1.1.1 Mac Installation (5 - 20 minutes)
-Navigate to [sentinel.examples's release page](https://github.com/dougnoel/sentinel.example/releases) and download the **mac-install.command** file. Double-click on the file and everything you need will be automatically installed.
+You will need the following prerequisites installed:
+- [Xcode](https://developer.apple.com/xcode/)
+- [Homebrew](https://brew.sh/)
+- [Git](https://git-scm.com/)
+- [Chrome](https://www.google.com/chrome/)
+- [Java](https://www.oracle.com/java/technologies/javase-downloads.html)
+- [Maven](http://maven.apache.org/)
+- [Eclipse](https://www.eclipse.org/)
+
+Once they are installed, you can continue with Section 1.2. Alternately, you can follow the instructions below and then move on to Section 1.3.
+
+**Refer to [MAC-INSTALL.md](MAC-INSTALL.md) for installation instructions.**
 
 You can check the installation by opening up a terminal window and typing the following:
 
@@ -32,12 +43,19 @@ cd ~/Projects/sentinel.example
 mvn test
 ```
 
-If Chrome pops up and the tests run successfully, you are ready to move to Section 1.2.
-
-If you have issues with installation, refer to [MAC-INSTALL.md](MAC-INSTALL.md) for manual installation instructions.
+If Google Chrome pops up and the tests run successfully, you are ready to move to Section 1.3.
 
 ### 1.1.2 Windows Installation (10 - 20 minutes)
-There is no easy way to create a batch file to install all the tools you will need on Windows. Refer to [WIN-INSTALL.md](WIN-INSTALL.md) for manual installation instructions.
+You will need the following prerequisites installed:
+- [Git](https://git-scm.com/)
+- [Chrome](https://www.google.com/chrome/)
+- [Java](https://www.oracle.com/java/technologies/javase-downloads.html)
+- [Maven](http://maven.apache.org/)
+- [Eclipse](https://www.eclipse.org/)
+
+Once they are installed, you can continue with Section 1.2. Alternately, you can follow the instructions below and then move on to Section 1.3.
+
+**Refer to [WIN-INSTALL.md](WIN-INSTALL.md) for installation instructions.**
 
 You can check the installation by opening up a command window and typing the following:
 
@@ -45,9 +63,7 @@ You can check the installation by opening up a command window and typing the fol
 cd %HOMEPATH%\Projects\sentinel.example
 mvn test
 ```
-If chrome pops up and the tests run successfully, you are ready to move to Section 1.2.
-
-If you have issues with installation, 
+If Internet Explorer pops up and the tests run successfully, you are ready to move to Section 1.3.
 
 ### 1.1.3 Linux Installation (5 - 20 minutes)
 There is no installation script for Linux as different flavors have different package managers. (You are encouraged to contribute a shell script for installing tools on you os.) After installing the appropriate tools, cd to the directory you want the project in and clone the repo.
@@ -59,7 +75,7 @@ cp conf/sentinel.linux.example.yml conf/sentinel.yml
 mvn test
 ```
 
-If chrome pops up and the tests run successfully, you are ready to move to Section 1.2.
+If the tests run successfully, you are ready to move to Section 1.3.
 
 If you have issues with installation, refer to the individual tool manufacturers.
 
@@ -104,9 +120,10 @@ Now that we have a ticket created, we can creature our first feature file. It's 
 
 Feature file names should start with a story ticket number, then have the full text on the Summary field, followed by __.feature__ as the file extension. (NOTE: Any colons (:), forward slashes (/) or backward slashes (\) should be removed from the name of the file as they are not compatible across operating systems and can cause your tests to fail on other machines even if they do not fail on your machine.)
 
-1. In the __Package Explorer__ expand __src/test/java__.
-2. Right-click on the __features__ folder and select __New -> File__.
-3. Enter the Jira Ticket Number Story summary and .feature in the __File Name__ box.
+1. In the __Project Explorer__ expand __src/test/java__.
+2. Right-click on the __features__ folder and select __New -> Other...__.
+3. In the dialog that appears, expand the __General__ folder and select __File__ then click the __Next__ button.
+3. Enter the Jira Ticket Number Story summary and .feature in the __File Name__ box. (ex. `US1234 User Story Name.feature`) (_Make sure there are no spaces at the beginning or end of the feature file._)
 4. Click the __Finish__ button.
 5. Paste the following into the editor, replace everything in {} with the requested information, and save the file.
 
@@ -238,6 +255,7 @@ A Scenario Outline allows us to pass variables into our test scenarios. They sho
 In addition to using the keyword **Scenario Outline:** a Scenario Outline must have an **Examples:** Section which should be indented at the same level as the other keywords (Given, When, Then, And, But). The variables are indented another level. They are contained in a table made with pipes |. 
 
 ## 2.3 Creating a Page Object
+A page object holds all of the information needed for the automation tool to locate the elements of a page on a web page. Each element is given a human readable name, and then it is linked to a way to find that element on a web page. Sentinel then utilizes the powerful Selenium Webdriver to find these elements. However, Sentinel then wraps those locators in code that solves a number of common problems people using Selenium typically encouner, such as needing to wait for a page to load, an element changing on the page, and optimizing this search so that it takes as little time as possible.
 
 1. In the __Package Explorer__ expand __src/main/java__.
 2. Right-click on the __com.com.dougnoel.sentinel.<projectname>.pages__ package and select __New -> Class__.
@@ -253,6 +271,8 @@ public class NewToursMenuPage extends Page {
 ```
 
 ### 2.3.1 Web Element Selectors
+Sentinel supports all the web element selector options that Selenium supports.
+https://www.browserstack.com/guide/findelement-in-selenium
 
 #### 2.3.1.1 Inspecting a Web Page in Chrome
 Before we can create a Page Element, we need to find an element on a web page.
@@ -272,44 +292,8 @@ public class MyNewPage extends Page {
 
 `new Textbox username_field() { return new Textbox(ID, "my_id"); }` 
 
-### 2.3.1.3 Using an Element Name
-
-### 2.3.1.4 Using Text
-
-### 2.3.1.5 Using Partial Text
-
 ### 2.3.1.6 Using an XPath
 `new Textbox username_field() { return new Textbox(XPATH, "//div[@id='login_button_container']//form/input[1]"); }`
-
-### 2.3.1.7 Using a Class Name
-
-### 2.3.1.8 Using a CSS Identifier
-
-### 2.3.2 Web Element Types
-
-#### 2.3.2.1 Button
-
-#### 2.3.2.2 Checkbox
-
-#### 2.3.2.3 Div
-
-#### 2.3.2.4 Dropdown
-
-#### 2.3.2.5 GoogleMap
-
-#### 2.3.2.6 IFrame
-
-#### 2.3.2.7 Label
-
-#### 2.3.2.8 Link
-
-#### 2.3.2.9 Radiobutton
-
-#### 2.3.2.10 Span
-
-#### 2.3.2.11 Table
-
-#### 2.3.2.12 Textbox
 
 ## 2.4 Creating a Page Object Configuration File
 >__NOTE:__ Vault server access has not been coded yet.
