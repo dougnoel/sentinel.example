@@ -37,5 +37,4 @@ elements:
     id: "login-button"
     xpath: "//input[@value='LOGIN']"
   error_message:
-    xpath: "//div[@id='login_button_container']/div/form/h3"
     xpath: "//h3[@data-test='error']"
