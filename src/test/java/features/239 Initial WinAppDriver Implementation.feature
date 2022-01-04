@@ -20,3 +20,15 @@ Feature: 239 Implement WinAppDriver to automate windows
   	  And I press the "2" button
   	  And I press the "Equals" button
   	Then I expect that "Result" contains "3"
+  	
+  @239C
+  Scenario: 239C Navigate to a curation set
+  	Given that I open "C:\Users\tbouchard\AppData\Local\ManualCurationToolsAlpha\ManualCurationTools.App.exe"
+  	When the window "Sample Set" opens
+  	  And I enter "22793" into the "//*[@AutomationId=\"SampleSetIdTextBox\"]" xpath
+  	  And I press the "//*[@AutomationId=\"SampleSetButton\"]" xpath button
+  	  And the window "22793" opens
+  	  And I press the "Peak Transformer" button
+  	  And the "Ion Visualizer" button should exist
+  	  And I press the "Ion Visualizer" button
+  	Then the "Peak Transformer" button should exist
