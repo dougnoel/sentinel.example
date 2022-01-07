@@ -9,7 +9,6 @@ import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 
 import com.dougnoel.sentinel.exceptions.SentinelException;
-import com.dougnoel.sentinel.pages.PageManager;
 import com.dougnoel.sentinel.webdrivers.WebDriverFactory;
 
 import io.cucumber.junit.CucumberOptions;
@@ -22,7 +21,6 @@ import io.cucumber.junit.Cucumber;
 	, plugin = {"json:target/cucumber.json",
 			"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
 	, strict = true
-//      , tags = { "@48" }
 )
 
 public class TestRunner {
@@ -37,7 +35,7 @@ public class TestRunner {
     public static void tearDownAfterClass() throws SentinelException {
         log.info("Driver: {}", WebDriverFactory.getWebDriver());
         if (System.getProperty("leaveBrowserOpen", "false") == "false") {
-        	PageManager.quit();
+        	WebDriverFactory.quit();
         }
     }
 }

@@ -9,6 +9,9 @@ bin/
 .factorypath
 .metadata/
 
+# Ignore VScode project settings
+.vscode/
+
 #Ignore logs
 *.log*
 

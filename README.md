@@ -1,4 +1,4 @@
-# Sentinel.Example 1.0.7-SNAPSHOT
+﻿# Sentinel.Example 1.0.7-SNAPSHOT
 Works with ![Sentinel](https://img.shields.io/github/v/release/dougnoel/sentinel?color=gree&include_prereleases&style=plastic)
 
 # Why should I use this?
@@ -7,7 +7,7 @@ Works with ![Sentinel](https://img.shields.io/github/v/release/dougnoel/sentinel
 3. It allows multiple selectors for your elements, allowing you to test multiple sets of code in different environments with the same code.
 4. It dynamically waits for you, loading things as quickly as possible, and freeing your time to write tests.
 5. All testing output can be understood by business users, and test results can be used as reproducible steps for bugs without further investigation, making bug writing simple and easy.
-6. Page objects are easily understandable text (Yaml) files instead of coded objects. Page objects are dynamically created for you.
+6. Page objects are easily understandable text (Yaml) files instead of coded objects. The underlying code is dynamically created for you.
 7. Web Drivers are handled for you, and drivers are automatically downloaded and installed for any browser you have installed and want to use.
 8. Reports are generated for you so you can show results with your first test.
 
@@ -24,17 +24,17 @@ This section will get you up and running, executing the example tests in 30 minu
 ## 1.1 Prerequisites
 You will need to have the following tools installed to use the project:
  * Git
- * Java (11)
+ * Java (11 or later)
  * Maven (2.5.4 or later)
  * WinAppDriver (Optional - 1.2.1 or later)
  * Google Chrome (Recommended)
  * Eclipse (Recommnded)
  
-You can find installation instructions below. **NOTE:** These instructions are provided AS IS. You may log tickets to improve the efficacy of the instructions. They are being provided to help users who are not developers install development tools that are not a part of this project. If you are having difficulty installing any of these tools, please refer to the makers of these tools. Links to the makers of these tools are provided in [MAC-INSTALL.md](MAC-INSTALL.md) and [WIN-INSTALL.md](WIN-INSTALL.md).
+You can find installation instructions below. **NOTE:** These instructions are provided AS IS. You may log tickets to improve the efficacy of the instructions. They are being provided to help users who are not developers install development tools that are not a part of this project. If you are having difficulty installing any of these tools, please refer to the makers of these tools. Links to the makers of these tools are provided at the head of each installation section and link to download links where possible.
 
-If you already have these tools installed, you can clone the sentinel.example project and move directly to Section 1.2. It is recommended that you use google chrome for initial setup. It is also suggested you use Eclipse as your IDE, as all the instructions are written for Eclipse. If you are familiar with IntelliJ or another editor, it is assumed you are knowledgeable enough to get the project working in your IDE without detailed instructions.
+If you already have these tools installed, you can clone the sentinel.example project and move directly to Section 1.2. It is recommended that you use google chrome for initial setup. It is also suggested you use Eclipse as your IDE, as all the instructions are written for Eclipse. If you are familiar with IntelliJ, VSCode or another editor, it is assumed you are knowledgeable enough to get the project working in your IDE without detailed instructions.
 
-If you want to check this project out for your own base project execute the following commands:
+If you want to check this project out for your own base project execute the following command:
 
 ```
 git clone https://github.com/dougnoel/sentinel.example.git myprojectname
@@ -87,9 +87,8 @@ The steps below will take you through manual installation of all the tools you n
 6. Download the JDK
 7. Install the JDK
 8. Set the JAVA\_HOME variable. [Click here for instructions.](https://www.codejava.net/java-core/how-to-set-java-home-environment-variable-on-windows-10)
-9. Download Maven
 10. Extract Maven to C:\Program Files\Maven
-11. Set the MAVEN\_HOME variable.
+11. Set the MAVEN\_HOME variable. [Instructions here.](https://www.javatpoint.com/how-to-install-maven)
 12. Add %JAVA\_HOME%\bin;%MAVEN\_HOME%\bin to the PATH variable.
 13. Proceed to `1.1.2.1` for optional installation of WinAppDriver for windows automation.
 14. Install [Eclipse SE](https://www.eclipse.org/).
@@ -99,20 +98,22 @@ The steps below will take you through manual installation of all the tools you n
 
 Go to Section 1.2
 
-#### 1.1.2.1 Optionally installing Windows Application Driver for Windows application automation
-1. Download WinAppDriver. [Click here for updated instructions if the below does not work.](https://github.com/microsoft/WinAppDriver)
+#### 1.1.2.1 WinAppDriver Setup (5 - 30 minutes)
+**NOTE:** These instructions are provided AS IS. You may log tickets to improve the efficacy of the instructions, but there is no support for the instructions. They are being provided to help users who are not developers install development tools and enable developer mode. If you are having difficulty installing any of these tools, or changing these settings, please refer to the following:
+- [WinAppDriver](https://github.com/microsoft/WinAppDriver)
+- [Enabling Windows Development Mode](https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development)
+
+If you want to do Windows application automation (not web browser) then you need to install WinAppDriver and turn on developer mode for your Windows box(es) that will be testing windows applications. This is optional, and not required to do browser testing on windows.
+
+1. Go to the [WinAppDriver Releases Page](https://github.com/microsoft/WinAppDriver/releases) and download the latest stable WinAppDriver installer.
 2. Install WinAppDriver.
 3. Add `%PROGRAMFILES(x86)%\Windows Application Driver` to the path variable for **64-bit machines**, `%PROGRAMFILES%\Windows Application Driver` for **32-bit machines** to the PATH variable.
+4. Navigate to Windows Settings.
+5. Using Windows Settings search and navigate to `Developer Settings`.
+6. Enable developer mode by clicking the radio button marked `Developer Mode`. Wait as it says **Searching for Developer Mode**.
+7. Verify the above by typing `WinAppDriver` in a new cmd or powershell window and ensuring WinAppDriver starts without errors. It may be quit afterwards.
 
-Go to Section 1.1.2.2
-
-#### 1.1.2.2 Optionally setting Windows to developer mode for Windows application automation
-1. Using the start menu navigate to Windows settings. [Click here for updated instructions if the below does not work.](https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development)
-2. Using `Windows settings` search and navigate to `Developer Settings`.
-3. Enable developer mode by clicking the radial button marked `Developer Mode`.
-4. Restart your windows machine once the operation in step 3 completes.
-
-Resume section 1.1.2
+NOTE: If turning on developer mode doesn't work, reboot your system and then it should work.
 
 ### 1.1.3 Linux Installation (5 - 20 minutes)
 There are no installation instructions for Linux as different flavors have different package managers. If you have issues with installation, refer to the individual tool manufacturers.
@@ -153,8 +154,122 @@ Repeat for the next plugin.
 
 If a browser pops up and the tests run successfully, you have successfully imported the project and are ready to build tests.
 
+## 1.4 Setting up the Project in Visual Studio Code (10 minutes)
+Visual Studio code is a supported alternative to Eclipse.
+
+### 1.4.1 Installing VSCode
+There are Windows, Mac, and Linux versions: https://code.visualstudio.com/download
+1. Select the correct version for your environment and download the installer.
+2. Run the VSCode installer. Accept all the default options.
+
+### 1.4.2 Installing Plugins
+Visual Studio Code includes a marketplace for extensions which can be accessed with ctrl+shift+x (or the square blocks button on the side bar.) The extensions listed are recommended but others can be substituted.
+
+In the extension explorer (ctrl+shift+x):
+1. Search for Java Extension Pack, select the one by Microsoft and click the install button.
+2. Search for Cucumber (Gherkin) Full Support select the one by Alex Krechik and click the install button.
+
+### 1.4.3 Opening and Running the Project
+In the top left menu:
+1. Select File -> Open folder.
+2. Navigate to the directory that the project is downloaded to and select the encompassing folder.
+
+In the file explorer (ctrl+shift+e):
+1. Select the Maven tab. 
+2. In the Maven tab, right click the project and select install.
+3. In the Maven tab, right click test to execute the test cases.
+
+Some tests may require some additional configurations to run.
+
+###1.4.4 Configuring Tests Using the Maven Commandline Options
+To setup different testing presets, open the Command Palette (ctrl+shift+p):
+1. Search for and select Tasks: Configure Task.
+2. Select the option to create tasks.json file from template.
+3. Select the option to use the maven template.
+
+The new tasks.json file is created in the .vscode directory. You can add additional test configurations with commands in this file. 
+To select which one to run, open the Command Palette (ctrl+shift+p):
+
+1. Search for and select Tasks: Run Test Task.
+2. Select the label for the configuration that you would like to execute.
+
 # Section 2: Writing Your First Test (20 minutes)
 Now that you have sentinel.example up and running, let's create a new test.
+
+## 2.1 Identifying our Test
+So we have tests for the Swag Labs Website. Let's say that we have a new requirement, adding an item to our cart. We have already automated logging in, and verifying the sort on the main page. We have a ticket in our system [Swag Labs Add To Cart #63
+](https://github.com/dougnoel/sentinel.example/issues/63) that contains our requirements. Here's out requirement:
+
+`As a customer of Swag Labs, I want to be able to select an item and place it in my cart, so that I have an item in my cart.`
+
+So, first I need to write some acceptance criteria that will become my automated tests. We need to login, add an item to our cart, and verify the item is in the cart. I can do that with the following acceptance criteria:
+
+```
+Given that I am logged in
+When I add an item to my cart
+Then the item will be in my cart
+```
+
+This is enough for us to get started.
+
+## 2.2 Making Cucumber Steps
+To write Cucumber steps we need to create a new test feature file, and create the steps needed.
+
+### 2.2.1 Creating our feature file
+1. In the **Package Explorer**, expand the project by clicking the right arrow next to the project name.
+2. Expand src/test/java
+3. Right-click **features** and select **New->File** (Tests must always be stored in the **features** directory or a sub-directory beneath it.)
+4. In the **Create New File** dialog box, enter a filename of `63 Swag Labs Add To Cart.feature` (You will see that we have pre-pended the file name with the ticket number and then ended it with `.feature`. Both of these are important. Also, a filename cannot contain `:, /, or \`.)
+5. In our new file we want to tell people who created this so they can ask us questions later. On the first line put: `#Author: <your name>` (Note the `#` sign indicates a comment line, and if this isn't the first character on the line, you will get an error message when you run the tests.)
+6. On the next line we want a tag to allow us to run just this file, so we will add `@63` which is our ticket number to line 2.
+7. Our third line is going to be the name of the feature. This will show up in our test results and should match our filename so that it is easy to find this test if our test fails. So our third line will read: `Feature: 63 Swag Labs Add To Cart` (Notice how the ticket number once again shows up at the front of the feature name. This is important to find it later.)
+8. Our fourth line is going to be the description of the ticket. We will paste it from our ticket and add 2 spaces in front of it: `  As a customer of Swag Labs, I want to be able to select an item and place it in my cart, so that I have an item in my cart.`
+9. The fifth line is going to be blank.
+10. On line 6 we are going to add a tag for the first scenario (in this case our only one) with two spaces in front of it: `  @63A` (Note that we just use the ticket number and append A, B, C, etc for each scenario if we have multiple.)
+11. Next we are going to add our scenario name, with two spaces in front of it: `  Scenario: Add To Cart`
+12. We will now add our steps from section 2.1, making sure that each line has 4 spaces in front of it.
+
+```
+    Given that I am logged in
+    When I add an item to my cart
+    Then the item will be in my cart
+```
+Then we will save the file.
+
+### 2.2.2 Testing our Feature File
+Now that we have created a file, we will test to see if it works.
+
+1. Go to **Run -> Run configurations...**
+2. Under JUnit, select **TestRunner** and right-click and select **Duplicate**
+4. Select the duplicated test and in the **Name:** box to the right change the name to reflect the changes you are making (e.g. **TestRunner 63**).
+5. Click on the **(x)= Arguments** tab.
+6. In the **VM arguments:** box add a space after the existing arguments (-ea may be the only argument) and then put `-Dkey=value` For example to pass a different browser than chrome use `-ea -Dcucumber.options="--tags @63"`.
+7. Click the **Run** button. (In the future, from the Toolbar, click the drop down arrow to the right of the Run toolbar icon <img src="images/eclipse_tool_bar_icon_run.png" height="14"> and select your test name (e.g. **TestRunner 63**).)
+
+You will notice that your tests don't run. You will receive a message `You can implement missing steps with the snippets below:` along with some sample code. While it is tempting to write code, Sentinel leverages generic steps so that we do not have to re-write code every time we write a test. Below we will re-write each of our steps using existing Cucumber steps so that we do not need to write any new code.
+
+### 2.2.3 Re-Write Given that I am logged in
+This is a pretty straightforward step, but it assumes a lot of knowledge. It assumes you know what page you are going to, the account you are logging in with, and the steps needed to actually log in. We are going to break that down into a few parts, but luckily, the code to do this already exists.
+
+Let's take a look at another feature file, `48 Swag Labs Product Page.feature`. You can find it under `src/test/java -> features`. Double click to open it up. On line 11 of that page, you will see that we already have a step that indicates the page we are going to and the user account that we are using. `Given I login to the Sauce Demo Login Page as StandardUser` So let's use that. Copy line 11 and then go back to `63 Swag Labs Add To Cart.feature` and replace our `Given that I am logged in` line with the more verbose line.
+
+Now someone knows that we are going to the Swag Labs Login page, and that we are logging in with a user is a Standard User (instead of say an admin.) But where is that page, and how does Sentinel know to get there? Let's take a look at the page object. Go to `src/main/java` and you will see a `com.saucedemo` package. This is the typical Maven naming convention, a url in reverse form. So our production website is `saucedemo.com`. We can go there to see the page we are using. We will come back to this in a minute.
+
+### 2.2.4 Re-Write When I add an item to my cart
+While this particular step is something that can be followed by a human recreating this test, it hides its implementation. In other words, there are multiple actions hidden. This step is also generalized without being reusable. By reading it I cannot tell what item was added to the cart, or how how it was selected. This presents us with a number of problems:
+
+1. A developer trying to reproduce this bug may need to know what specific item was selected. That information will not be available in the test results, and so they may be unable to reproduce the bug if it is an item-specific issue.
+2. The step following this one that verifies the item was added to the cart can only verify that **an** item was added, not that the **correct** item was added. This results in potential bugs getting through where the incorrect item is placed in the cart.
+3. If there are multiple ways to add an item to a cart (for example clicking an add item button or dragging and dropping the item into the cart) then that information is lost.
+
+blah
+
+### 2.2.5 Making a Page Object
+A Page Object is an abstraction that allows us to put all the locators for a web page (or part of a page) in a single file, so that we have one central location to update if our locators change. Note that with sentinel the page object is not code, but a YAML file that is turned into an object at the time of execution. This makes page objects language agnostic. They file the YAML file format, which is just text. This provides a lower barrier to entry for non-technical testing, and also prevents page objects from being used incorrectly. It is 
+
+- Making a page object
+- Making Cucumber Steps
+- Executing the test
 
 # Section 3: Learning Good Automation Practices (1 hour)
 Now that you've seen how things works, you're going to want to jump in and start creating tests. This is where you have to decide if you want to be a superstar or not. If this were easy, everyone would be doing it, and SDET roles wouldn't command top dollar. If you read these instructions and spend the time necessary to learn the process involved, you will create tests at a rate that will astonish you and your co-workers. If you do not, this will be a mediocre tool that will get you some speed improvements, but will slowly bog down your process just like every other tool you've used until the implementation fails and is discarded. The information here companies pay a lot of money to have me come teach their QA and Development groups. You're getting it for the cost of reading this document to the end.
@@ -707,12 +822,13 @@ NOTE: Snapshot versions require the word snapshot, eg. `1.0.7-SNAPSHOT`.
 
 ### How do I add command line options in Eclipse when running tests?
 1. Go to **Run -> Run configurations...**
-2. Under JUnit, select **SentinelTests** and in the **Name:** box to the right change the name to reflect the changes you are making.
-3. Click on the **(x)= Arguments** tab.
-4. In the **VM arguments:** box add a space after the existing arguments (-ea may be the only argument) and then put `-Dkey=value` For example to pass a different browser than chrome use `-Dbrowser=edge`.
-5. Click the **Apply** button.
-6. Click the **Close** button.
-7. From the Toolbar, click the drop down arrow to the right of the Run toolbar icon <img src="images/eclipse_tool_bar_icon_run.png" height="14"> and select **SentinelTests - Dev**.
+2. Under JUnit, select **TestRunner** and right-click and select **Duplicate**
+4. Select the duplicated test and in the **Name:** box to the right change the name to reflect the changes you are making (e.g. **TestRunner Edge**).
+5. Click on the **(x)= Arguments** tab.
+6. In the **VM arguments:** box add a space after the existing arguments (-ea may be the only argument) and then put `-Dkey=value` For example to pass a different browser than chrome use `-Dbrowser=edge`.
+7. Click the **Apply** button.
+8. Click the **Close** button.
+9. From the Toolbar, click the drop down arrow to the right of the Run toolbar icon <img src="images/eclipse_tool_bar_icon_run.png" height="14"> and select your test name (e.g. **TestRunner Edge**).
 
 ### How do I leave the browser open at the end of my test?
 When running on the command line, you can use the argument `-DleaveBrowserOpen`. Ex:
@@ -732,13 +848,17 @@ In Eclipse:
 8. From the Toolbar, click the drop down arrow to the right of the Run toolbar icon <img src="images/eclipse_tool_bar_icon_run.png" height="14"> and select your new test runner.
 
 ### How do I run only certain tests?
-If you want to run specific tagged tests, you can do so by passing in cucumber arguments on the command line. E.G. `mvn -Dcucumber.options="--tags @106" test`
+If you want to run specific tagged tests, you can do so by passing in cucumber arguments on the command line. E.G. `mvn -Dcucumber.options="--tags @63" test`
 
 You can also do so by customizing a Run Configuration.
-1. Go to Run -> Run Configurations...
-2. Make a copy of Sentinel Tests
-3. Click on the arguments tab.
-4. Change the VM arguments from `-ea` to something like `-ea -Dcucumber.options="--tags @106"` replacing the tag(s) you want to use with your tag.
+1. Go to **Run -> Run configurations...**
+2. Under JUnit, select **TestRunner** and right-click and select **Duplicate**
+4. Select the duplicated test and in the **Name:** box to the right change the name to reflect the changes you are making (e.g. **TestRunner 63**).
+5. Click on the **(x)= Arguments** tab.
+6. In the **VM arguments:** box add a space after the existing arguments (-ea may be the only argument) and then put `-Dkey=value` For example to pass a different browser than chrome use `-ea -Dcucumber.options="--tags @63"`.
+7. Click the **Apply** button.
+8. Click the **Close** button.
+9. From the Toolbar, click the drop down arrow to the right of the Run toolbar icon <img src="images/eclipse_tool_bar_icon_run.png" height="14"> and select your test name (e.g. **TestRunner 63**).
 
 For more information on command line options you can use for cucumber, you may refer to [this article](https://www.toolsqa.com/selenium-cucumber-framework/run-cucumber-test-from-command-line-terminal/).
 
@@ -863,10 +983,10 @@ In stage it would use your more secure admin account, but for normal user tests 
 Check to make sure someone didn't update the tests account passwords. If they did, update your page object yaml files accordingly.
 
 ### How do I use a different/newer/custom version of Chrome?
-If you want to use a different Chrome executable, you need to change the browser type to `customChrome` and set the `chromeBrowserBinary` value to the path of the executable you want to use.
+If you want to use a different Chrome executable change the `chromeBrowserBinary` value to the path of the executable you want to use.
 
 ```
-mvn test -D browser=customChrome -DchromeBrowserBinary=path/to/executable/executableName
+mvn test -DchromeBrowserBinary=path/to/executable/executableName
 ```
 
 Alternately, you can just add the values to your sentinel.yml config file:
@@ -874,7 +994,6 @@ Alternately, you can just add the values to your sentinel.yml config file:
 ```
 configurations:
   default:
-    browser: customChrome
     chromeBrowserBinary: "path/to/executable/executableName"
 ```
 
