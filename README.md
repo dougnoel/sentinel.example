@@ -26,6 +26,7 @@ You will need to have the following tools installed to use the project:
  * Git
  * Java (11 or later)
  * Maven (2.5.4 or later)
+ * WinAppDriver (Optional - 1.2.1 or later)
  * Google Chrome (Recommended)
  * Eclipse (Recommnded)
  
@@ -73,6 +74,7 @@ Go to Section 1.2
 - [Chrome](https://www.google.com/chrome/)
 - [Java](https://www.oracle.com/java/technologies/javase-downloads.html)
 - [Maven](http://maven.apache.org/)
+- [WinAppDriver](https://github.com/microsoft/WinAppDriver)
 - [Eclipse](https://www.eclipse.org/)
 
 The steps below will take you through manual installation of all the tools you need to use Sentinel on Windows 10: Git, Chrome, Java, Maven and Eclipse. It assumes that no development tools have been installed on your machine. If some of these have been installed, you can skip the steps you do not need.
@@ -88,10 +90,11 @@ The steps below will take you through manual installation of all the tools you n
 10. Extract Maven to C:\Program Files\Maven
 11. Set the MAVEN\_HOME variable. [Instructions here.](https://www.javatpoint.com/how-to-install-maven)
 12. Add %JAVA\_HOME%\bin;%MAVEN\_HOME%\bin to the PATH variable.
-13. Install [Eclipse SE](https://www.eclipse.org/).
-14. Open Eclipse and tell it to use a version later than 1.8 by default. [Instructions Here.](https://www.eclipse.org/eclipse/news/4.10/jdt.php#:~:text=Java%E2%84%A2%2011%20Support,-Eclipse%20support%20for&text=A%20Java%2011%20JRE%20is,using%20the%20project's%20context%20menu.) If you already imported the project, you will need to update the project settings by following [these instructions](https://www.baeldung.com/eclipse-change-java-version) as well.
-14. Open **File Explorer** and create a new folder called **Projects** in your home directory.
-15. Right-click the folder where you want to install the project and select **Open Git Bash here**. Click on the window that opens.
+13. Proceed to `1.1.2.1` for optional installation of WinAppDriver for windows automation.
+14. Install [Eclipse SE](https://www.eclipse.org/).
+15. Open Eclipse and tell it to use a version later than 1.8 by default. [Instructions Here.](https://www.eclipse.org/eclipse/news/4.10/jdt.php#:~:text=Java%E2%84%A2%2011%20Support,-Eclipse%20support%20for&text=A%20Java%2011%20JRE%20is,using%20the%20project's%20context%20menu.) If you already imported the project, you will need to update the project settings by following [these instructions](https://www.baeldung.com/eclipse-change-java-version) as well.
+16. Open **File Explorer** and create a new folder called **Projects** in your home directory.
+17. Right-click the folder where you want to install the project and select **Open Git Bash here**. Click on the window that opens.
 
 Go to Section 1.2
 
