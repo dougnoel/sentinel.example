@@ -1,4 +1,4 @@
-# Sentinel.Example 2.0.0
+﻿# Sentinel.Example 1.0.7-SNAPSHOT
 Works with ![Sentinel](https://img.shields.io/github/v/release/dougnoel/sentinel?color=gree&include_prereleases&style=plastic)
 
 # Why should I use this?
@@ -24,6 +24,7 @@ You will need to have the following tools installed to use the project:
  * Git
  * Java (11 or later)
  * Maven (2.5.4 or later)
+ * WinAppDriver (Optional - 1.2.1 or later)
  * Google Chrome (Recommended)
  * Eclipse (Recommnded)
  
@@ -71,6 +72,7 @@ Go to Section 1.2
 - [Chrome](https://www.google.com/chrome/)
 - [Java](https://www.oracle.com/java/technologies/javase-downloads.html)
 - [Maven](http://maven.apache.org/)
+- [WinAppDriver](https://github.com/microsoft/WinAppDriver)
 - [Eclipse](https://www.eclipse.org/)
 
 The steps below will take you through manual installation of all the tools you need to use Sentinel on Windows 10: Git, Chrome, Java, Maven and Eclipse. It assumes that no development tools have been installed on your machine. If some of these have been installed, you can skip the steps you do not need.
@@ -86,12 +88,30 @@ The steps below will take you through manual installation of all the tools you n
 10. Extract Maven to C:\Program Files\Maven
 11. Set the MAVEN\_HOME variable. [Instructions here.](https://www.javatpoint.com/how-to-install-maven)
 12. Add %JAVA\_HOME%\bin;%MAVEN\_HOME%\bin to the PATH variable.
-13. Install [Eclipse SE](https://www.eclipse.org/).
-14. Open Eclipse and tell it to use a version later than 1.8 by default. [Instructions Here.](https://www.eclipse.org/eclipse/news/4.10/jdt.php#:~:text=Java%E2%84%A2%2011%20Support,-Eclipse%20support%20for&text=A%20Java%2011%20JRE%20is,using%20the%20project's%20context%20menu.) If you already imported the project, you will need to update the project settings by following [these instructions](https://www.baeldung.com/eclipse-change-java-version) as well.
-14. Open **File Explorer** and create a new folder called **Projects** in your home directory.
-15. Right-click the folder where you want to install the project and select **Open Git Bash here**. Click on the window that opens.
+13. Proceed to `1.1.2.1` for optional installation of WinAppDriver for windows automation.
+14. Install [Eclipse SE](https://www.eclipse.org/).
+15. Open Eclipse and tell it to use a version later than 1.8 by default. [Instructions Here.](https://www.eclipse.org/eclipse/news/4.10/jdt.php#:~:text=Java%E2%84%A2%2011%20Support,-Eclipse%20support%20for&text=A%20Java%2011%20JRE%20is,using%20the%20project's%20context%20menu.) If you already imported the project, you will need to update the project settings by following [these instructions](https://www.baeldung.com/eclipse-change-java-version) as well.
+16. Open **File Explorer** and create a new folder called **Projects** in your home directory.
+17. Right-click the folder where you want to install the project and select **Open Git Bash here**. Click on the window that opens.
 
 Go to Section 1.2
+
+#### 1.1.2.1 WinAppDriver Setup (5 - 30 minutes)
+**NOTE:** These instructions are provided AS IS. You may log tickets to improve the efficacy of the instructions, but there is no support for the instructions. They are being provided to help users who are not developers install development tools and enable developer mode. If you are having difficulty installing any of these tools, or changing these settings, please refer to the following:
+- [WinAppDriver](https://github.com/microsoft/WinAppDriver)
+- [Enabling Windows Development Mode](https://docs.microsoft.com/en-us/windows/apps/get-started/enable-your-device-for-development)
+
+If you want to do Windows application automation (not web browser) then you need to install WinAppDriver and turn on developer mode for your Windows box(es) that will be testing windows applications. This is optional, and not required to do browser testing on windows.
+
+1. Go to the [WinAppDriver Releases Page](https://github.com/microsoft/WinAppDriver/releases) and download the latest stable WinAppDriver installer.
+2. Install WinAppDriver.
+3. Add `%PROGRAMFILES(x86)%\Windows Application Driver` to the path variable for **64-bit machines**, `%PROGRAMFILES%\Windows Application Driver` for **32-bit machines** to the PATH variable.
+4. Navigate to Windows Settings.
+5. Using Windows Settings search and navigate to `Developer Settings`.
+6. Enable developer mode by clicking the radio button marked `Developer Mode`. Wait as it says **Searching for Developer Mode**.
+7. Verify the above by typing `WinAppDriver` in a new cmd or powershell window and ensuring WinAppDriver starts without errors. It may be quit afterwards.
+
+NOTE: If turning on developer mode doesn't work, reboot your system and then it should work.
 
 ### 1.1.3 Linux Installation (5 - 20 minutes)
 There are no installation instructions for Linux as different flavors have different package managers. If you have issues with installation, refer to the individual tool manufacturers.
@@ -131,6 +151,45 @@ Repeat for the next plugin.
 9. Right-click on TestRunner.java and select Run As -> JUnit Test
 
 If a browser pops up and the tests run successfully, you have successfully imported the project and are ready to build tests.
+
+## 1.4 Setting up the Project in Visual Studio Code (10 minutes)
+Visual Studio code is a supported alternative to Eclipse.
+
+### 1.4.1 Installing VSCode
+There are Windows, Mac, and Linux versions: https://code.visualstudio.com/download
+1. Select the correct version for your environment and download the installer.
+2. Run the VSCode installer. Accept all the default options.
+
+### 1.4.2 Installing Plugins
+Visual Studio Code includes a marketplace for extensions which can be accessed with ctrl+shift+x (or the square blocks button on the side bar.) The extensions listed are recommended but others can be substituted.
+
+In the extension explorer (ctrl+shift+x):
+1. Search for Java Extension Pack, select the one by Microsoft and click the install button.
+2. Search for Cucumber (Gherkin) Full Support select the one by Alex Krechik and click the install button.
+
+### 1.4.3 Opening and Running the Project
+In the top left menu:
+1. Select File -> Open folder.
+2. Navigate to the directory that the project is downloaded to and select the encompassing folder.
+
+In the file explorer (ctrl+shift+e):
+1. Select the Maven tab. 
+2. In the Maven tab, right click the project and select install.
+3. In the Maven tab, right click test to execute the test cases.
+
+Some tests may require some additional configurations to run.
+
+###1.4.4 Configuring Tests Using the Maven Commandline Options
+To setup different testing presets, open the Command Palette (ctrl+shift+p):
+1. Search for and select Tasks: Configure Task.
+2. Select the option to create tasks.json file from template.
+3. Select the option to use the maven template.
+
+The new tasks.json file is created in the .vscode directory. You can add additional test configurations with commands in this file. 
+To select which one to run, open the Command Palette (ctrl+shift+p):
+
+1. Search for and select Tasks: Run Test Task.
+2. Select the label for the configuration that you would like to execute.
 
 # Section 2: Writing Your First Test (20 minutes)
 Now that you have sentinel.example up and running, let's create a new test.
