@@ -488,6 +488,19 @@ In Eclipse:
 7. Click the **Close** button.
 8. From the Toolbar, click the drop down arrow to the right of the Run toolbar icon <img src="images/eclipse_tool_bar_icon_run.png" height="14"> and select your new test runner.
 
+***Aditional Notes:***
+When using the `-DleaveBrowserOpen` option the driver may not be terminated and cleaned on **Windows** after the browser is closed. This is a known issue with the current chromedriver.
+
+These may need to be closed and cleaned manually. Temporary files are often located in:
+
+- **C:/Program Files/**
+- **C:/Program Files (x86)/**
+- **C:/Users/[USERNAME]/AppData/Local/Temp/**
+- **%localappdata%/Temp/**
+
+Depending on how the automation is launched Program Files may be used as a location due to the bug:
+https://bugs.chromium.org/p/chromedriver/issues/detail?id=4322
+
 ### How do I run only certain tests?
 If you want to run specific tagged tests, you can do so by passing in cucumber arguments on the command line. E.G. `mvn -Dcucumber.filter.tags="@63 @34" test`
 
