@@ -493,10 +493,9 @@ When using the `-DleaveBrowserOpen` option the driver may not be terminated and 
 
 These may need to be closed and cleaned manually. Temporary files are often located in:
 
-- **C:/Program Files/**
-- **C:/Program Files (x86)/**
-- **C:/Users/[USERNAME]/AppData/Local/Temp/**
-- **%localappdata%/Temp/**
+- **%programfiles(x86)%**
+- **%ProgramFiles%**
+- **%localappdata%\Temp**
 
 Depending on how the automation is launched Program Files may be used as a location due to the bug:
 https://bugs.chromium.org/p/chromedriver/issues/detail?id=4322
